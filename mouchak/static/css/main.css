@@ -22,6 +22,446 @@ html {
     font-size: 1em;
     line-height: 1.4;
 }
+body {
+    margin: 0;
+    padding: 0;
+    font-family:'Roboto', sans-serif;
+}
+.container {
+ 
+}
+.navigation-style {
+    position: relative;
+    margin-top: 15px;
+    height: 41px;
+    background: none repeat scroll 0% 0% #000;
+}
+.navigation-style > ul > li {
+    font-size:18px;
+    padding:0px 45px;
+}
+.navigation-style li {
+    width:auto;
+    color:red;
+    font-size: 16px;
+    line-height: 41px;
+    padding: 0px 30px;
+    text-decoration: none;
+    display: inline-block;
+    font-size:16px;
+
+}
+
+.navigation-style li a {
+    width:auto;
+    color:white;
+    font-size:18px;
+}
+
+.navigation-style li:hover a{
+    text-decoration: none;
+    display: inline-block;
+}
+hr {
+    color:blue;
+}
+.contentblockright {
+    float: right;
+    width: 400px
+}
+
+
+/* home page content design  */
+#khmdl-carousel .carousel-inner>.item>img { 
+    height: 400px
+ }
+
+.content-head1 {
+color:#000000; 
+border-bottom: 1px dotted #C00000 ;
+width:80%;
+/*font-family: sans-serif, roboto;*/
+font-size: 24px;
+padding: 1em 0.1em 0.1em 0em;
+margin: 0.2em 0.1em 0.8em 0em;
+}
+
+
+.content-head2 {
+color:#000000; 
+border-bottom: 1px dotted #C00000 ;
+width:80%;
+/*font-family: sans-serif, roboto;*/
+font-size: 24px;
+padding: 1em 0.1em 0.1em 0em;
+margin: 0.2em 0.1em 0.8em 0em;
+}
+ .media
+    {
+        /*box-shadow:0px 0px 4px -2px #000;*/
+        margin: 20px 0;
+        padding:30px;
+    }
+    .dp
+    {
+        border:10px solid #eee;
+        transition: all 0.2s ease-in-out;
+    }
+    .dp:hover
+    {
+        border:2px solid #eee;
+        transform:rotate(360deg);
+        -ms-transform:rotate(360deg);  
+        -webkit-transform:rotate(360deg);  
+        /*-webkit-font-smoothing:antialiased;*/
+    }
+/* content styling for other pages  */
+
+.main-head {
+color:#000000; 
+/*font-family: sans-serif, roboto;*/
+font-size: 24px;
+padding: 5px 1px 2px 0px;
+margin: 5px 1px 8px 1px;
+text-align: left;
+border-bottom: 1px #c00000 dotted;
+}
+.subcontent-head {
+color:#000000;
+/*font-family: sans-serif, roboto;*/
+font-size: 18px;
+padding: 5px 1px 2px 0px;
+margin: 5px 1px 8px 1px;
+text-align: left;
+}
+
+.col-md-6 {
+width: 58%;
+margin-left: 0.3em;
+}
+.my-col-9 {
+    width: 75%;
+    float: left;
+    clear: both;
+    position: relative;
+  }
+  .my-col-3 {
+    width: 25%;
+    float: left;
+    clear: both;
+    position: relative;
+  }
+  #header-box .col-md-9, #header-box .col-md-3 {
+    padding: 0;
+  }
+
+.block {
+line-height: 150%;
+padding: 10px 0px 5px 2px;
+margin: 10px 0px 5px 2px;
+text-align: justify;
+font-size: 14px;
+color: #000000;
+}
+
+.underblock {
+line-height: 125%;
+font-size: 14px;
+text-align: justify;
+}
+
+
+.block em {
+vertical-align: super;
+}
+
+a:link {
+color: #c00000;
+}
+
+a:hover {
+color: #000000;
+}
+
+
+ul.dropdown-menu li {
+/*    background:!important none repeat scroll 0% 0% rgb(255, 255, 255);*/
+/*    border-bottom: 1px inset rgb(188, 181, 215);*/
+    filter: none;
+    font-size: 14px;
+    display: block;
+    border-right:none;
+    line-height: 1px;
+    padding: 6px;
+    margin:0px 0px 0px 0px;
+    color: rgb(0, 0, 0);
+}
+ul.dropdown-menu {
+    margin:0;
+    font-size:smaller;
+    background-color:#c00000;
+}
+.dropdown-menu li a {
+        padding: 3px 20px;
+	width:100%;
+    }
+li.maintab:hover {
+    background-color:#c00000;
+    color:yellow;
+}
+.navigation-style ul li a:hover {
+    color: white;
+    text-decoration: none;
+}
+.dropdown-menu > li > a:hover {
+    background-color:#000;
+}
+.dropdown-menu > li > a:focus {
+    background-color:#c00000;
+}
+
+/*testing hover */
+body{margin-top:0px;
+     overflow-y:scroll;
+     font-size:18px;
+     }
+.panel-body { padding:0px;}
+.panel-body table tr td { padding-left: 15px }
+.panel-body .table {margin-bottom: 0px; }
+
+li.a {
+    color:#000;
+    border-right:none;
+    list-style-type:square;
+}
+.header-color{
+    color:red;
+}
+
+.well {
+    background-color:#f7f7f7;
+border-radius: 0px;
+}
+
+.col-md-4 {
+    padding:0px 10px 0px 0px;
+}
+/* Site Map style */
+.dropdown-large {
+  position: static !important;
+}
+.dropdown-menu-large {
+  margin-left: 16px;
+  margin-right: 16px;
+  padding: 20px 0px;
+  width: auto;
+
+}
+.col-lg-12 {
+    list-style:none;
+}
+.dropdown-menu-large > li > ul {
+  padding: 0;
+  margin: 0;
+}
+.dropdown-menu-large > li > ul > li {
+  list-style: none;
+}
+.dropdown-menu-large > li > ul > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.428571429;
+//  color: white;
+  white-space: normal;
+}
+
+
+.dropdown-menu-large > li ul > li > a:hover {
+text-decoration: none;
+background-color: #C00000;
+}
+.dropdown-menu-large > li ul > li > a:focus {
+  text-decoration: none;
+  color: #262626;
+  */background-color: #f5f5f5;*/
+/head}
+.dropdown-menu-large .disabled > a,
+.dropdown-menu-large .disabled > a:hover,
+.dropdown-menu-large .disabled > a:focus {
+  color: #999999;
+}
+.dropdown-menu-large .disabled > a:hover,
+.dropdown-menu-large .disabled > a:focus {
+  text-decoration: none;
+  background-color: transparent;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  cursor: not-allowed;
+}
+.dropdown-menu-large .dropdown-header {
+  color: #c00000;
+  font-size: 18px;
+}
+@media (max-width: 768px) {
+  .dropdown-menu-large {
+    margin-left: 0 ;
+    margin-right: 0 ;
+  }
+  .dropdown-menu-large > li {
+    margin-bottom: 30px;
+  }
+  .dropdown-menu-large > li:last-child {
+    margin-bottom: 0;
+  }
+  .dropdown-menu-large .dropdown-header {
+    padding: 3px 15px !important;
+  }
+}
+/* style map styles end */
+/*dropsown sub menu css */
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+/* drop down menu css ends here */
+
+/* footer social icons style*/
+#footer-container {
+    margin-bottom:20px;
+}
+.social-icons {
+   
+   }
+
+.panel-default > .panel-heading {
+    background-color: #000;
+    padding: 5px 0px;
+}
+
+.footer-links {
+    margin-top: 1px;
+}
+
+.footer-links a {
+    osition: relative;
+    color:#fff;
+    font-size: 18px;
+    margin-top: 15px;
+    height: 41px;
+    background: none repeat scroll 0% 0% #000;
+    margin:0px 0px 0px 20px;
+    padding:0px 10px;
+
+}
+.footer-links a:hover{
+    color:red;
+    text-decoration:none;
+}
+#pageview-counter-wrapper {
+    margin-top: 3px;
+}
+#collapse-sitemap .panel-body {
+    background-color:#000;
+    padding-bottom:5px;
+}
+
+#small-footer {
+    font-size:12px;
+    margin-top:10px;
+}
+/* footer style ends here */
+
+/* Search box styles */
+
+.input-group {
+    flaot:right;
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    margin-top: 7.5%;
+}
+
+.footer-style {
+     position: relative;
+    font-size: 16px;
+    color:#fff;
+     height: 35px;
+    background: none repeat scroll 0% 0% #000;
+    padding-top:2px;
+     }
+
+.footer-style li {
+    width:auto;
+    color:red;
+    font-size: 16px;
+    line-height: 35px;
+    padding: 0px 20px;
+    text-decoration: none;
+    display: inline-block;
+    border-right: 1px solid rgb(255, 255, 255);
+
+}
+
+.footer-style li a {
+    width:auto;
+    color:white;
+}
+.dropdown-menu-large > li ul > li > a{
+    color:white;
+    padding-left: 0px;
+    padding-right: 5px;
+
+}
+
+.dropdown-menu-large > li ul > li > a:hover{
+    color:white;
+}
 
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
@@ -38,6 +478,26 @@ html {
     background: #b3d4fc;
     text-shadow: none;
 }
+
+
+@import url('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css');
+@import url('//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css');
+
+.panel-heading {
+    cursor: pointer;
+}
+
+/* CSS Method for adding Font Awesome Chevron Icons */
+ .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family:'FontAwesome';
+    content:"\f077";
+    float: right;
+    color: inherit;
+}
+.panel-heading.collapsed .accordion-toggle:after {
+    /* symbol for "collapsed" panels */
+    content:"\f078";
 
 /*
  * A better looking default horizontal rule
