@@ -282,6 +282,52 @@
       </div>
     </div>
   </script>
+ <script type="text/template" id="people-template">
+    <div class="contentview">
+      <form class="form-horizontal">
+        <div class="row">
+          <div class="form-group col-lg-6">
+            <label><b>Type</b></label>
+            <select class="form-control">
+              <% _.each(M.contentTypes, function(type) { %>
+                <option><%= type %></option>
+                <%  }); %>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-6">
+            <div class="input-group">
+              <span class="input-group-addon"> <b>Name</b> </span>
+              <input class="form-control"  type="text" placeholder="Name of the
+              Person" value="<%=
+              name %>" m-data-target="name">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-6">
+            <div class="input-group">
+              <span class="input-group-addon"> <strong>Title</strong> </span>
+              <input class="form-control"  type="text" placeholder="Please
+              enter Title"
+              value="<%= title %>" m-data-target="title">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-6">
+            <div class="input-group">
+              <span class="input-group-addon"> <strong>Profile Image</strong> </span>
+              <input class="form-control"  type="text" placeholder="Image URL"
+              value="<%= image %>" m-data-target="image">
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div id="specific-content"></div>
+</script>
 
   <script type="text/template" id="map-template">
     <div class="data">
