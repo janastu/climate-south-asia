@@ -238,9 +238,24 @@ li.a {
     color:red;
 }
 
+.home-page-images {
+  margin-left: 8.5%;
+}
+
+#heading {
+  font-size: 26px;
+  margin-left: 30px;
+
+}
+
+b, strong {
+  color: #6f0d02;
+
+}
 .well {
-    background-color:#f7f7f7;
+background-color:#f7f7f7;
 border-radius: 0px;
+margin: 35px 0px 0px 10px;
 }
 
 .col-md-4 {
@@ -556,7 +571,6 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
 
 /* ==========================================================================
    Helper classes
