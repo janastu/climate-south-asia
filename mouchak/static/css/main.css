@@ -22,19 +22,15 @@ html {
     font-size: 1em;
     line-height: 1.4;
 }
-body {
-    margin: 0;
-    padding: 0;
-    font-family:'Roboto', sans-serif;
-}
-.container {
- 
-}
+
 .navigation-style {
     position: relative;
-    margin-top: 15px;
+    margin-top: -20px;
     height: 41px;
-    background: none repeat scroll 0% 0% #000;
+    background: none repeat scroll 0% 0% rgb(1, 55, 40);
+
+padding-left:150px;
+
 }
 .navigation-style > ul > li {
     font-size:18px;
@@ -106,6 +102,8 @@ margin: 0.2em 0.1em 0.8em 0em;
     {
         border:10px solid #eee;
         transition: all 0.2s ease-in-out;
+width:175px;
+height:175px;
     }
     .dp:hover
     {
@@ -151,8 +149,11 @@ margin-left: 0.3em;
     clear: both;
     position: relative;
   }
-  #header-box .col-md-9, #header-box .col-md-3 {
+  #header-bx .col-md-9, #header-box .col-md-3 {
     padding: 0;
+font-size: 46px;
+font-style: italic;
+text-shadow: 0px 0px 20px #222;
   }
 
 .block {
@@ -179,7 +180,8 @@ a:link {
 color: #c00000;
 }
 
-a:hover {
+a:hover
+ {
 color: #000000;
 }
 
@@ -194,19 +196,19 @@ ul.dropdown-menu li {
     line-height: 1px;
     padding: 6px;
     margin:0px 0px 0px 0px;
-    color: rgb(0, 0, 0);
+    color: #3f3b42     ;
 }
 ul.dropdown-menu {
     margin:0;
     font-size:smaller;
-    background-color:#c00000;
+    background-color:rgb(1, 55, 49) ;
 }
 .dropdown-menu li a {
         padding: 3px 20px;
 	width:100%;
     }
 li.maintab:hover {
-    background-color:#c00000;
+    background-color:#3F3B42;
     color:yellow;
 }
 .navigation-style ul li a:hover {
@@ -214,17 +216,17 @@ li.maintab:hover {
     text-decoration: none;
 }
 .dropdown-menu > li > a:hover {
-    background-color:#000;
+    background-color:#3f3b42;
 }
 .dropdown-menu > li > a:focus {
     background-color:#c00000;
 }
-
+.dropdown-menu
+{ 
+background-color:rgb(1, 55, 40);
+ }
 /*testing hover */
-body{margin-top:0px;
-     overflow-y:scroll;
-     font-size:18px;
-     }
+
 .panel-body { padding:0px;}
 .panel-body table tr td { padding-left: 15px }
 .panel-body .table {margin-bottom: 0px; }
@@ -245,6 +247,10 @@ border-radius: 0px;
 
 .col-md-4 {
     padding:0px 10px 0px 0px;
+    width:14%;
+margin-left:15%;
+margin-top:2%;
+text-align:center;
 }
 /* Site Map style */
 .dropdown-large {
@@ -280,7 +286,7 @@ border-radius: 0px;
 
 .dropdown-menu-large > li ul > li > a:hover {
 text-decoration: none;
-background-color: #C00000;
+background-color: #3f3b42;
 }
 .dropdown-menu-large > li ul > li > a:focus {
   text-decoration: none;
@@ -301,7 +307,7 @@ background-color: #C00000;
   cursor: not-allowed;
 }
 .dropdown-menu-large .dropdown-header {
-  color: #c00000;
+  color: white  ;
   font-size: 18px;
 }
 @media (max-width: 768px) {
@@ -394,20 +400,21 @@ background-color: #C00000;
     font-size: 18px;
     margin-top: 15px;
     height: 41px;
-    background: none repeat scroll 0% 0% #000;
+    background: none repeat scroll 0% 0% rgb(1, 55, 40);
     margin:0px 0px 0px 20px;
     padding:0px 10px;
 
 }
 .footer-links a:hover{
-    color:red;
+    color:white;
+background-color:#3f3b42;
     text-decoration:none;
 }
 #pageview-counter-wrapper {
     margin-top: 3px;
 }
 #collapse-sitemap .panel-body {
-    background-color:#000;
+    background-color:rgb(1, 55, 40);
     padding-bottom:5px;
 }
 
@@ -432,8 +439,9 @@ background-color: #C00000;
     font-size: 16px;
     color:#fff;
      height: 35px;
-    background: none repeat scroll 0% 0% #000;
+    background: none repeat scroll 0% 0% rgb(1, 55, 40);
     padding-top:2px;
+margin-top:4%;
      }
 
 .footer-style li {
@@ -556,7 +564,188 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+body { 
+    padding: 30px 0px;
+    margin: 0;                                                                                                                                                         
+    padding: 0;                                                                                                                                                        
+    font-family:'Roboto', sans-serif;                                                                                                                                  
+background-color:#dbdfdd;
+  margin-top:0px;                                                                                                                                                    
+     overflow-y:scroll;                                                                                                                                                
+     font-size:18px;
+       }
+#lightbox .modal-content { 
+    display: inline-block;
+    text-align: center;   
+    width:136%;
+                           }                    
 
+#lightbox .close { 
+    opacity: 1;
+    color: rgb(255, 255, 255);
+    background-color: rgb(25, 25, 25);
+    padding: 5px 8px;
+    border-radius: 30px;
+    border: 2px solid rgb(255, 255, 255);
+    position: absolute;
+    top: -15px;
+    right: -55px;
+    
+    z-index:1032;
+                   }
+ .head
+{ 
+font-size: 46px;
+font-style: italic;
+text-shadow: 0px 0px 20px #222;
+ }
+.media-object .dp .img-circle
+{ 
+width:150px;
+height:150px;
+ }
+/* carousel */
+#quote-carousel 
+{ 
+  padding: 0 10px 30px 10px;
+  margin-top: 30px 0px 0px;
+  
+  }
+/* Control buttons  */
+#quote-carousel .carousel-control
+{ 
+  background: none;
+  color: #222;
+  font-size: 2.3em;
+  text-shadow: none;
+  margin-top: 30px;
+  }
+/* Previous button  */
+#quote-carousel .carousel-control.left 
+{ 
+  left: -12px;
+background-image:url(  );
+  }
+/* Next button  */
+#quote-carousel .carousel-control.right 
+{ 
+  right: -12px !important;
+right: 0px;
+left: auto;
+background-repeat: repeat-x;
+  }
+/* Changes the position of the indicators */
+#quote-carousel .carousel-indicators 
+{ 
+  right: 50%;
+  top: auto;
+  bottom: 0px;
+  margin-right: -19px;
+  }
+/* Changes the color of the indicators */
+#quote-carousel .carousel-indicators li 
+{ 
+  background: #c0c0c0;
+  }
+#quote-carousel .carousel-indicators .active 
+{ 
+  background: #333333;
+  }
+#quote-carousel img
+{ 
+  width: 250px;
+  height: 100px
+  }
+/* End carousel */
+
+.item blockquote { 
+    border-left: none; 
+    margin: 0;
+                   
+                   }
+.item blockquote img { 
+    margin-bottom: 10px;
+                       
+                       }
+.item blockquote p:before { 
+    content: "\f10d";
+    font-family: 'Fontawesome';
+    float: left;
+    margin-right: 10px;
+                            
+                            }
+
+
+/**
+  MEDIA QUERIES
+*/
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {  
+    #quote-carousel 
+    { 
+      margin-bottom: 0;
+      padding: 0 40px 30px 40px;
+      margin-top: 30px;
+      
+    
+      
+      }
+}
+/* Small devices (tablets, up to 768px) */
+@media (max-width: 768px) {  
+    
+    /* Make the indicators larger for easier clicking with fingers/thumb on mobile */
+    
+    #quote-carousel .carousel-indicators { 
+        bottom: -20px !important;  
+                                           }
+    #quote-carousel .carousel-indicators li { 
+        display: inline-block;
+        margin: 0px 5px;
+        width: 15px;
+        height: 15px;
+                                              }
+                                              
+    #quote-carousel .carousel-indicators li.active { 
+        margin: 0px 5px;
+        width: 20px;
+        height: 20px;
+                                                     
+                                                     }
+
+.destacados{ 
+    padding: 20px 0;
+             text-align: center;
+
+             }
+.destacados > div > div{ 
+                         padding: 10px;
+                         border: 1px solid transparent;
+                         border-radius: 4px;
+                         transition: 0.2s;
+                         }
+.destacados > div:hover > div{ 
+                               margin-top: -10px;
+                               border: 1px solid rgb(200, 200, 200);
+                               box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
+                               background: rgba(200, 200, 200, 0.1);
+                               transition: 0.5s;
+                               }
+
+  
+
+
+
+#text 
+{
+text-shadow: 0px 4px 7px rgb(29, 104, 96);
+color: rgb(1, 55, 49);
+font: 40px tahoma, sans-serif, arial;
+position:absolute;
+top: 1%;
+padding-left: 10px; 
+ }
 
 /* ==========================================================================
    Helper classes
@@ -747,3 +936,6 @@ textarea {
         page-break-after: avoid;
     }
 }
+li .dropdown .maintab: hover ul .dropdown-menu
+{ display:block;
+ }
