@@ -391,6 +391,16 @@
           shp: this.model.get('shp')
         }));
       }
+
+      else if(type === 'people') {
+        var template = _.template($('#people-template').html());
+        $('#specific-content').html(template({
+          name: this.model.get('name'),
+          title: this.model.get('title'),
+          content: this.model.get('content')
+         // src: this.model.get('image')
+        }));
+      }
     },
     typeChanged: function(event) {
       var type = this.$select.val();

@@ -248,10 +248,11 @@ li.a {
     color:red;
 }
 
-.well {
-    background-color:#f7f7f7;
-border-radius: 0px;
-}
+
+
+
+
+
 
 .col-md-4 {
     padding:0px 10px 0px 0px;
@@ -687,6 +688,7 @@ margin-bottom:-19px;
                             }
 
 
+<<<<<<< HEAD
 
 .img-heading
 { 
@@ -767,6 +769,8 @@ padding-left: 10px;
 { 
 height:154px;
  }
+
+
 
 /* ==========================================================================
    Helper classes
@@ -957,6 +961,9 @@ height:154px;
         page-break-after: avoid;
     }
 }
+
 li .dropdown .maintab: hover ul .dropdown-menu
 { display:block;
  }
+
+

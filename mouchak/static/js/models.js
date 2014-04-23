@@ -70,6 +70,21 @@
     }
   });
 
+//Vijaynagara Hampi - Extending base type
+  
+
+  var People = BaseType.extend({
+    defaults: _.extend({
+      name:"",
+      title:"",
+      content:""
+     // image:""
+      
+    }, BaseType.prototype.defaults),
+    initialize: function() {
+      BaseType.prototype.initialize.call(this, arguments);
+    }
+  });
   // Plugin model can be used to load dynamic components
   // to the website by loading external JS files.
   // Also the website can be styled by using external CSS files,
@@ -223,10 +238,12 @@
     'plugin': Plugin,
     'map': Map,
     'Page': Page,
-    'Pages': Pages
+    'Pages': Pages,
+    'people': People
+	
   };
 
   //content types to render in content menu
-  M.contentTypes = ['text', 'image', 'video', 'table', 'plugin', 'map'];
+  M.contentTypes = ['text', 'image', 'video', 'table', 'plugin', 'map', 'people'];
 
 })(M);
