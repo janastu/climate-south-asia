@@ -22,14 +22,18 @@ html {
     font-size: 1em;
     line-height: 1.4;
 }
+body{ 
+background-color:#bcc8c0;
+ }
 
 .navigation-style {
     position: relative;
-    margin-top: -20px;
+    margin-top: -60px;
     height: 41px;
     background: none repeat scroll 0% 0% rgb(1, 55, 40);
-
-padding-left:150px;
+z-index:1000;
+opacity:0.7;
+padding-left:100px;
 
 }
 .navigation-style > ul > li {
@@ -58,6 +62,10 @@ padding-left:150px;
     text-decoration: none;
     display: inline-block;
 }
+.navigation
+{ 
+margin-left:7em;
+ }
 hr {
     color:blue;
 }
@@ -177,7 +185,7 @@ vertical-align: super;
 }
 
 a:link {
-color: #c00000;
+color: rgb(1, 55, 40);
 }
 
 a:hover
@@ -201,7 +209,7 @@ ul.dropdown-menu li {
 ul.dropdown-menu {
     margin:0;
     font-size:smaller;
-    background-color:rgb(1, 55, 49) ;
+    background-color:rgb(1, 55, 40) ;
 }
 .dropdown-menu li a {
         padding: 3px 20px;
@@ -219,7 +227,7 @@ li.maintab:hover {
     background-color:#3f3b42;
 }
 .dropdown-menu > li > a:focus {
-    background-color:#c00000;
+    background-color:#3f3b42;
 }
 .dropdown-menu
 { 
@@ -251,6 +259,7 @@ border-radius: 0px;
 margin-left:15%;
 margin-top:2%;
 text-align:center;
+color:rgb(1, 55, 40);
 }
 /* Site Map style */
 .dropdown-large {
@@ -265,6 +274,7 @@ text-align:center;
 }
 .col-lg-12 {
     list-style:none;
+font-size:16px;
 }
 .dropdown-menu-large > li > ul {
   padding: 0;
@@ -421,6 +431,7 @@ background-color:#3f3b42;
 #small-footer {
     font-size:12px;
     margin-top:10px;
+margin-left:2em;
 }
 /* footer style ends here */
 
@@ -624,7 +635,6 @@ height:150px;
 #quote-carousel .carousel-control.left 
 { 
   left: -12px;
-background-image:url(  );
   }
 /* Next button  */
 #quote-carousel .carousel-control.right 
@@ -641,6 +651,7 @@ background-repeat: repeat-x;
   top: auto;
   bottom: 0px;
   margin-right: -19px;
+margin-bottom:-19px;
   }
 /* Changes the color of the indicators */
 #quote-carousel .carousel-indicators li 
@@ -676,6 +687,12 @@ background-repeat: repeat-x;
                             }
 
 
+
+.img-heading
+{ 
+color:rgb(1, 55, 40);
+
+ }
 /**
   MEDIA QUERIES
 */
@@ -745,6 +762,10 @@ font: 40px tahoma, sans-serif, arial;
 position:absolute;
 top: 1%;
 padding-left: 10px; 
+ }
+.img-size
+{ 
+height:154px;
  }
 
 /* ==========================================================================
