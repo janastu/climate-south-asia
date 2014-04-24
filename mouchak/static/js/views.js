@@ -12,7 +12,7 @@
       $(el).append(this.el);
       var title = this.model.get('title') || '';
       var str = '<h4>'+ title +'</h4> <p>' +
-      this.model.get('data') + '</p>';
+            this.model.get('data') + '</p>';
       $(this.el).html(str);
       M.appendAttrs(this.model, this.el);
     }
@@ -83,9 +83,9 @@
       }
     },
     render: function(el) {
-     $(el).append(this.el);
-     $(this.el).attr('src', this.model.get('src'));
-     M.appendAttrs(this.model, this.el);
+      $(el).append(this.el);
+      $(this.el).attr('src', this.model.get('src'));
+      M.appendAttrs(this.model, this.el);
     }
   });
 
@@ -132,6 +132,40 @@
     }
   });
 
+  var ListView = Backbone.View.extend({
+    tagName: 'div',
+    className: 'list-view',
+    initialize: function() {
+      _.bindAll.apply(_, [this].concat(_.functions(this)));
+      _.bind(this.render, this);
+      this.list = new Backbone.Collection();
+      this.list.url = 'getDB';
+      this.list.fetch({data:{url: this.model.get("dataSrc"),
+                             dbvar: ''},
+                       success: this.render});
+
+    },
+      render: function() {
+      var childView = new ListContainerView({
+        collection: this.list,
+        el: $(this.model.get("containerElement")),
+        template: _.template($(this.model.get("templateElement")).html())
+      });
+          // childView.render();
+    }
+  });
+
+  var ListContainerView = Backbone.View.extend({
+    initialize: function(options) {
+      _.bindAll.apply(_, [this].concat(_.functions(this)));
+      _.bind(this.render, this);
+      this.template = options.template || '';
+      _.each(this.collection.models, this.render, this);
+    },
+    render: function(model) {
+      $(this.el).append(this.template(model.toJSON()));
+    }
+  });
   var PageView = Backbone.View.extend({
     tagName: 'div',
     className: 'pageview',
@@ -155,6 +189,9 @@
         if(item.get('type') === 'rss') {
           M.rss_view = new view({model: item});
           $(self.el).append(_.template($('#news-template').html()));
+        }
+        if(item.get('type') === 'ListView') {
+          new view({model: item});
         }
         else {
           var item_view = new view({model: item});
@@ -181,6 +218,7 @@
     'table': TableView,
     'plugin': PluginView,
     'map': MapView,
+    'ListView': ListView,
     'PageView': PageView
   };
 })(M);

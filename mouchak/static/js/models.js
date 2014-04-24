@@ -70,16 +70,13 @@
     }
   });
 
-//Vijaynagara Hampi - Extending base type
-  
-
-  var People = BaseType.extend({
+  //Create a model, which will accept an url for data-src,
+  //the data-src is used to create models further and assign view to it.
+  var ListType = BaseType.extend({
     defaults: _.extend({
-      name:"",
-      title:"",
-      content:""
-     // image:""
-      
+      dataSrc: "",
+      containerElement: "",
+      templateElement: ""
     }, BaseType.prototype.defaults),
     initialize: function() {
       BaseType.prototype.initialize.call(this, arguments);
@@ -187,6 +184,18 @@
     model: Page
   });
 
+  // var List = Backbone.Collection.extend({
+  //     url: 'getDB',
+  //     dataSrc: '',
+  //       initialize: function(options) {
+  //           this.fetch({data:{url: options.dataSrc,
+  //               dbvar:''},
+  //           success: function(data) {
+  //               this.add(data);
+  //                   }});
+  //     }
+  // });
+
   var Menu = Backbone.Model.extend({
     defaults: {
       customMenu: false
@@ -196,7 +205,7 @@
     },
     initialize: function() {
       this.id = this.get('id');
-    },
+    }
   });
 
   var Footer = Backbone.Model.extend({
@@ -239,11 +248,10 @@
     'map': Map,
     'Page': Page,
     'Pages': Pages,
-    'people': People
-	
+    'ListView': ListType
   };
 
   //content types to render in content menu
-  M.contentTypes = ['text', 'image', 'video', 'table', 'plugin', 'map', 'people'];
+      M.contentTypes = ['text', 'image', 'video', 'table', 'plugin', 'map', 'ListView'];
 
 })(M);

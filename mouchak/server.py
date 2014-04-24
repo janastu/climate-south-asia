@@ -30,6 +30,10 @@ import bson
 import conf
 import os
 import json
+import requests
+import logging
+from logging import FileHandler
+
 from werkzeug import secure_filename
 
 PLUGIN_UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__))
@@ -342,22 +346,27 @@ def removeFile(filename):
 @app.route('/robots.txt')
 @app.route('/crossdomain.xml')
 def static_from_root():
-    return flask.send_from_directory(app.static_folder, request.path[1:])
+    return flask.send_from_directory(app.static_folder, flask.request.path[1:])
 
+
+@app.route('/getDB')
+def getDB():
+    if flask.request.args['dbvar'] == '':
+        request = requests.api.get(flask.request.args['url'])
+        response = flask.make_response()
+        response.data = json.dumps(request.json())
+        response.headers['Content-Type'] = 'application/json'
+        return response
 
 app.config.from_object(conf)
 app.config['PLUGIN_UPLOAD_FOLDER'] = PLUGIN_UPLOAD_FOLDER
 app.config['FILE_UPLOAD_FOLDER'] = FILE_UPLOAD_FOLDER
 
-import logging,os
-from logging import FileHandler
 
-fil = FileHandler(os.path.join(os.path.dirname(__file__),'logme'),mode='a')
+fil = FileHandler(os.path.join(os.path.dirname(__file__), 'logme'), mode='a')
 fil.setLevel(logging.ERROR)
 app.logger.addHandler(fil)
 
 
-
 if __name__ == "__main__":
     app.run(debug=True, host=conf.HOST, port=conf.PORT)
-

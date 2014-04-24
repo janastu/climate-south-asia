@@ -392,14 +392,13 @@
         }));
       }
 
-      else if(type === 'people') {
-        var template = _.template($('#people-template').html());
+      else if(type === 'ListView') {
+        var template = _.template($('#list-view-template').html());
         $('#specific-content').html(template({
-          name: this.model.get('name'),
-          title: this.model.get('title'),
-          content: this.model.get('content')
-         // src: this.model.get('image')
-        }));
+          dataSrc: this.model.get('dataSrc'),
+        containerElement: this.model.get('containerElement'),
+        templateElement: this.model.get('templateElement')
+          }));
       }
     },
     typeChanged: function(event) {
@@ -454,7 +453,7 @@
         this.model.saveCode(data, function(resp) {
           //console.log('plugin saved..');
         });
-      }
+        }
       this.model.set(new_attrs);
       //console.log('content updated');
       M.editor.pageview.updateContent(this.model.toJSON());

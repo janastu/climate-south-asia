@@ -1,380 +1,366 @@
 {% extends "base.html" %}
 
 {% block head %}
-  <link rel="stylesheet" href="{{url_for('static', filename='css/editor.css')}}">
-  <title> Editing.. | {{ title }} </title>
+<link rel="stylesheet" href="{{url_for('static', filename='css/editor.css')}}">
+<title> Editing.. | {{ title }} </title>
 {% endblock %}
 
 {% block body %}
-  <div class="container" id="container">
-    <div id="header">
-      <div id="hud">
-        <span class="pull-right">Howdy! | <a href="{{ url_for('logout') }}">Logout</a></span>
-      </div>
-      <div id="notifications"></div>
+<div class="container" id="container">
+  <div id="header">
+    <div id="hud">
+      <span class="pull-right">Howdy! | <a href="{{ url_for('logout') }}">Logout</a></span>
     </div>
-    <div id="content-container"></div>
-    <div id="footer"></div>
+    <div id="notifications"></div>
   </div>
-  <div id="editor-overlay"></div>
+  <div id="content-container"></div>
+  <div id="footer"></div>
+</div>
+<div id="editor-overlay"></div>
 
-  <script>
-    // initialize editor
-    window.M = window.M || {};
-    M.MenuURL = function() { return "{{ url_for('insertMenu') }}"; };
-    M.FooterURL = function() { return "{{ url_for('insertFooter') }}"; };
-    M.HeaderURL = function() { return "{{ url_for('insertHeader') }}"; };
-    M.PageURL = function() { return "{{ url_for('insertPage') }}"; };
-    M.PluginUploadURL = function() { return "{{ url_for('uploadPlugin') }}"; };
-    M.UploadsURL = function() { return "{{ url_for('static', filename='uploads/') }}"; };
-    M.site_content = {{ content|tojson|safe }};
-    window.onload = function() {
-      M.editor.init();
-    };
-  </script>
+<script>
+  // initialize editor
+  window.M = window.M || {};
+  M.MenuURL = function() { return "{{ url_for('insertMenu') }}"; };
+  M.FooterURL = function() { return "{{ url_for('insertFooter') }}"; };
+  M.HeaderURL = function() { return "{{ url_for('insertHeader') }}"; };
+  M.PageURL = function() { return "{{ url_for('insertPage') }}"; };
+  M.PluginUploadURL = function() { return "{{ url_for('uploadPlugin') }}"; };
+  M.UploadsURL = function() { return "{{ url_for('static', filename='uploads/') }}"; };
+  M.site_content = {{ content|tojson|safe }};
+  window.onload = function() {
+  M.editor.init();
+  };
+</script>
 {% endblock %}
 
 {% block scripts %}
-  <script src="{{url_for('static', filename='js/lib/tinymce/tinymce.min.js')}}"></script>
-  <script src="{{url_for('static', filename='js/lib/tinymce/jquery.tinymce.min.js')}}"></script>
-  <script src="{{url_for('static', filename='js/lib/ace/ace.js')}}"></script>
-  <script src="{{url_for('static', filename='js/mouchak.js')}}"></script>
-  <script src="{{url_for('static', filename='js/models.js')}}"></script>
-  <script src="{{url_for('static', filename='js/views.js')}}"></script>
-  <script src="{{url_for('static', filename='js/editor.js')}}"></script>
+<script src="{{url_for('static', filename='js/lib/tinymce/tinymce.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/lib/tinymce/jquery.tinymce.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/lib/ace/ace.js')}}"></script>
+<script src="{{url_for('static', filename='js/mouchak.js')}}"></script>
+<script src="{{url_for('static', filename='js/models.js')}}"></script>
+<script src="{{url_for('static', filename='js/views.js')}}"></script>
+<script src="{{url_for('static', filename='js/editor.js')}}"></script>
 {% endblock %}
 
 {% block templates %}
 
-  <!-- Underscore templates -->
-  <script type="text/template" id="menu-config-template">
-    <div class="page">
-      <div class="menu-config">
-        <h4> Configure Navigation Menu </h4>
+<!-- Underscore templates -->
+<script type="text/template" id="menu-config-template">
+  <div class="page">
+    <div class="menu-config">
+      <h4> Configure Navigation Menu </h4>
 
+      <div class="row">
+        <div class="form-group col-lg-6">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <input id="custom-menu" type="checkbox">
+            </span>
+            <span class="input-group-addon"><strong>Custom Menu
+            </strong></span>
+          </div>
+          <span class="help-block">
+            <small>
+              activate to write your own custom menu
+            </small>
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-lg-12" id="menu-order-wrap">
+          <div class="input-group">
+            <span class="input-group-addon"> <strong> Menu Order</strong></span>
+            <input class="form-control" id="menu-order" type="text"
+                   placeholder="list,page,slugs,for,menu,order" value="<%= menu_order %>">
+          </div>
+          <span class="help-block">
+            <small>csv list of page slugs to come up in the navigation menu
+              in that order
+            </small>
+          </span>
+        </div>
+      </div>
+
+      <div class="menu-options" style="display: none;">
         <div class="row">
           <div class="form-group col-lg-6">
             <div class="input-group">
-              <span class="input-group-addon">
-                <input id="custom-menu" type="checkbox">
-              </span>
-              <span class="input-group-addon"><strong>Custom Menu
-              </strong></span>
+              <span class="input-group-addon"> <strong> Position </strong></span>
+              <input class="form-control"  id="pos" type="text" placeholder="[left, top]"
+                     value="<%= pos %>">
             </div>
-            <span class="help-block">
-              <small>
-                activate to write your own custom menu
-              </small>
-            </span>
           </div>
         </div>
-
         <div class="row">
-          <div class="form-group col-lg-12" id="menu-order-wrap">
-            <div class="input-group">
-              <span class="input-group-addon"> <strong> Menu Order</strong></span>
-              <input class="form-control" id="menu-order" type="text"
-              placeholder="list,page,slugs,for,menu,order" value="<%= menu_order %>">
-            </div>
-            <span class="help-block">
-              <small>csv list of page slugs to come up in the navigation menu
-                in that order
-              </small>
-            </span>
-          </div>
+          <label><strong> HTML for menu: </strong></label>
+          <div class="ace-mouchak" id="menu"><%= M.escapeHtml(menu) %></div>
         </div>
+      </div>
 
-        <div class="menu-options" style="display: none;">
-          <div class="row">
-            <div class="form-group col-lg-6">
-              <div class="input-group">
-                <span class="input-group-addon"> <strong> Position </strong></span>
-                <input class="form-control"  id="pos" type="text" placeholder="[left, top]"
-                value="<%= pos %>">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <label><strong> HTML for menu: </strong></label>
-            <div class="ace-mouchak" id="menu"><%= M.escapeHtml(menu) %></div>
-          </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+      <button id="updateMenu" class="btn btn-primary pull-right update-btn"> Update </button>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</script>
+
+<script type="text/template" id="header-config-template">
+  <div class="page">
+    <div><h4> Write HTML for your header here </h4></div>
+    <div id="header-input" class="ace-mouchak">
+      <%= M.escapeHtml(header) %>
+    </div>
+    <div class="row">
+      <button id="updateHeader" class="btn btn-primary pull-right update-btn"> Update </button>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</script>
+
+<script type="text/template" id="footer-config-template">
+  <div class="page">
+    <div><h4> Write HTML for your footer here </h4></div>
+    <div id="footer-input" class="ace-mouchak">
+      <%= M.escapeHtml(footer) %>
+    </div>
+    <div class="row">
+      <button id="updateFooter" class="btn btn-primary pull-right update-btn"> Update </button>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</script>
+
+<script type="text/template" id="page-list-template">
+  <div id="pagelistview">
+    <h4> List of Pages </h4>
+    <div id="pagelist"></div>
+    <button class="btn btn-primary" id="addPage">Add Page</button>
+    <hr>
+    <p> <a href="#" id="header-config"> Header </a> </p>
+    <p> <a href="#" id="footer-config"> Footer </a> </p>
+    <p> <a href="#" id="menu-config"> Navigation Menu </a> </p>
+    <p> <a href="#" id="uploads"> Uploads </a> </p>
+    <p><a href="{{ url_for('index') }}"> Go to site </a></p>
+  </div>
+</script>
+
+<script type="text/template" id="page-list-item-template">
+  <div class="pagename">
+    <a class="disp" id="<%= id %>" href="javascript:void(0);"><%= name %></a>
+    <span class="pull-right">
+      <a href="javascript:void(0);" class="remove" for="<%= id %>">
+        <span class="glyphicon glyphicon-trash"></span>
+      </a>
+    </span>
+    <span class="clearfix"></span>
+  </div>
+</script>
+
+<script type="text/template" id="page-template">
+  <div class="page">
+    <div class="row">
+      <h4> <strong><%= name %></strong> : Page Details </h4>
+    </div>
+    <hr/>
+    <form class="form-horizontal">
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"> <strong> Slug </strong></span>
+          <input class="form-control"  id="name" type="text"
+                 placeholder="slug of the page" value="<%= name %>">
         </div>
-
+        <span class="help-block">
+          <small>The URL part of the page, as it will appear in the URL</small>
+        </span>
       </div>
-      <div class="clearfix"></div>
-      <div class="row">
-        <button id="updateMenu" class="btn btn-primary pull-right update-btn"> Update </button>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-  </script>
-
-  <script type="text/template" id="header-config-template">
-    <div class="page">
-      <div><h4> Write HTML for your header here </h4></div>
-      <div id="header-input" class="ace-mouchak">
-        <%= M.escapeHtml(header) %>
-      </div>
-      <div class="row">
-        <button id="updateHeader" class="btn btn-primary pull-right update-btn"> Update </button>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-  </script>
-
-  <script type="text/template" id="footer-config-template">
-    <div class="page">
-      <div><h4> Write HTML for your footer here </h4></div>
-      <div id="footer-input" class="ace-mouchak">
-        <%= M.escapeHtml(footer) %>
-      </div>
-      <div class="row">
-        <button id="updateFooter" class="btn btn-primary pull-right update-btn"> Update </button>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-  </script>
-
-  <script type="text/template" id="page-list-template">
-    <div id="pagelistview">
-      <h4> List of Pages </h4>
-      <div id="pagelist"></div>
-      <button class="btn btn-primary" id="addPage">Add Page</button>
-      <hr>
-      <p> <a href="#" id="header-config"> Header </a> </p>
-      <p> <a href="#" id="footer-config"> Footer </a> </p>
-      <p> <a href="#" id="menu-config"> Navigation Menu </a> </p>
-      <p> <a href="#" id="uploads"> Uploads </a> </p>
-      <p><a href="{{ url_for('index') }}"> Go to site </a></p>
-    </div>
-  </script>
-
-  <script type="text/template" id="page-list-item-template">
-    <div class="pagename">
-      <a class="disp" id="<%= id %>" href="javascript:void(0);"><%= name %></a>
-      <span class="pull-right">
-        <a href="javascript:void(0);" class="remove" for="<%= id %>">
-          <span class="glyphicon glyphicon-trash"></span>
-        </a>
-      </span>
-      <span class="clearfix"></span>
-    </div>
-  </script>
-
-  <script type="text/template" id="page-template">
-    <div class="page">
-      <div class="row">
-        <h4> <strong><%= name %></strong> : Page Details </h4>
-      </div>
-      <hr/>
-      <form class="form-horizontal">
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-addon"> <strong> Slug </strong></span>
-            <input class="form-control"  id="name" type="text"
-            placeholder="slug of the page" value="<%= name %>">
-          </div>
-          <span class="help-block">
-            <small>The URL part of the page, as it will appear in the URL</small>
-          </span>
+      <div class="form-group">
+        <strong> Content </strong>
+        <div id="content" class="content well">
+          <%= content %>
+          <p></p>
+          <button class="addContent btn btn-sm btn-primary">Add Content</button>
         </div>
-        <div class="form-group">
-          <strong> Content </strong>
-          <div id="content" class="content well">
-            <%= content %>
-            <p></p>
-            <button class="addContent btn btn-sm btn-primary">Add Content</button>
-          </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"> <strong>Title</strong> </span>
+          <input class="form-control"  id="title" type="text" placeholder="title of the page"
+                 value="<%= title %>">
         </div>
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-addon"> <strong>Title</strong> </span>
-            <input class="form-control"  id="title" type="text" placeholder="title of the page"
-             value="<%= title %>">
-          </div>
-          <span class="help-block">
-            <small>title of the page</small>
-          </span>
-        </div>
-        <!--div class="form-group">
+        <span class="help-block">
+          <small>title of the page</small>
+        </span>
+      </div>
+      <!--div class="form-group">
           <div class="input-group">
             <span class="input-group-addon"> <strong>Children</strong> </span>
             <input class="form-control"  id="children" type="text" placeholder="csv of child pages"
-            value="<%= children %>">
+                   value="<%= children %>">
           </div>
           <span class="help-block">
             <small> leave this blank for now</small>
           </span>
-        </div-->
-        <div class="form-group">
-          <div class="input-group">
-              <span class="input-group-addon">
-                <input id="showNav" type="checkbox" <%= checked %> >
-              </span>
-              <input class="form-control" type="text" value="Show Navigation" disabled>
-          </div>
-          <span class="help-block">
-            <small>Show navigation menu in this page? </small>
+</div-->
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <input id="showNav" type="checkbox" <%= checked %> >
           </span>
+          <input class="form-control" type="text" value="Show Navigation" disabled>
         </div>
-        <button id="updatePage" type="submit" class="btn btn-primary pull-right"> Update </button>
-        <div class="clearfix"></div>
-      </form>
-    </div>
-  </script>
-
-  <script type="text/template" id="content-list-template">
-    <div class="content-item-wrapper">
-      <span class="content-item" id="content-<%= no %>">
-        <span class="label label-default"> <%= type %> </span>
-        <span class="content-snippet">
-          [ <small> <%= title %>  <%= more %> </small> ]
+        <span class="help-block">
+          <small>Show navigation menu in this page? </small>
         </span>
-      </span>
-      <span class="pull-right">
-        <a href="javascript:void(0);" class="remove" for="<%=no%>">
-          <span class="glyphicon glyphicon-trash"></span>
-        </a>
-      </span>
-      <span class="clearfix"></span>
-    </div>
-  </script>
-
-  <script type="text/template" id="content-template">
-    <div class="contentview">
-      <form class="form-horizontal">
-        <div class="row">
-          <div class="form-group col-lg-6">
-            <label><b>Type</b></label>
-            <select class="form-control">
-              <% _.each(M.contentTypes, function(type) { %>
-                <option><%= type %></option>
-                <%  }); %>
-            </select>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-lg-6">
-            <div class="input-group">
-              <span class="input-group-addon"> <b>Title</b> </span>
-              <input class="form-control"  type="text" placeholder="title of the content" value="<%=
-              title %>" m-data-target="title">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-lg-6">
-            <div class="input-group">
-              <span class="input-group-addon"> <strong>Tags</strong> </span>
-              <input class="form-control"  type="text" placeholder="csv of tags for this content"
-              value="<%= tags %>" m-data-target="tags">
-            </div>
-          </div>
-        </div>
-      </form>
-      <div class="row">
-        <div id="specific-content"></div>
       </div>
-      <div class="row">
-        <button class="btn btn-primary" id="done">Done</button>
-        <button class="btn btn-default" id="back">Back</button>
-        <!--button class="btn btn-primary" id="updateContent">Update</button-->
-      </div>
-    </div>
-  </script>
- <script type="text/template" id="people-template">
-    <div class="contentview">
-      <form class="form-horizontal">
-        <div class="row">
-          <div class="form-group col-lg-6">
-            <label><b>Type</b></label>
-            <select class="form-control">
-              <% _.each(M.contentTypes, function(type) { %>
-                <option><%= type %></option>
-                <%  }); %>
-            </select>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-lg-6">
-            <div class="input-group">
-              <span class="input-group-addon"> <b>Name</b> </span>
-              <input class="form-control"  type="text" placeholder="Name of the
-              Person" value="<%=
-              name %>" m-data-target="name">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-lg-6">
-            <div class="input-group">
-              <span class="input-group-addon"> <strong>Title</strong> </span>
-              <input class="form-control"  type="text" placeholder="Please
-              enter Title"
-              value="<%= title %>" m-data-target="title">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-lg-6">
-            <div class="input-group">
-              <span class="input-group-addon"> <strong>Profile Image</strong> </span>
-              <input class="form-control"  type="text" placeholder="Image URL"
-              value="<%= image %>" m-data-target="image">
-            </div>
-          </div>
-        </div>
-      </form>
-      <div class="row">
-        <div id="specific-content"></div>
+      <button id="updatePage" type="submit" class="btn btn-primary pull-right"> Update </button>
+      <div class="clearfix"></div>
+    </form>
+  </div>
 </script>
 
-  <script type="text/template" id="map-template">
-    <div class="data">
+<script type="text/template" id="content-list-template">
+  <div class="content-item-wrapper">
+    <span class="content-item" id="content-<%= no %>">
+      <span class="label label-default"> <%= type %> </span>
+      <span class="content-snippet">
+        [ <small> <%= title %>  <%= more %> </small> ]
+      </span>
+    </span>
+    <span class="pull-right">
+      <a href="javascript:void(0);" class="remove" for="<%=no%>">
+        <span class="glyphicon glyphicon-trash"></span>
+      </a>
+    </span>
+    <span class="clearfix"></span>
+  </div>
+</script>
+
+<script type="text/template" id="content-template">
+  <div class="contentview">
+    <form class="form-horizontal">
+      <div class="row">
+        <div class="form-group col-lg-6">
+          <label><b>Type</b></label>
+          <select class="form-control">
+            <% _.each(M.contentTypes, function(type) { %>
+            <option><%= type %></option>
+            <%  }); %>
+          </select>
+        </div>
+      </div>
       <div class="row">
         <div class="form-group col-lg-6">
           <div class="input-group">
-            <span class="input-group-addon"><strong>Tile Provider URL</strong></span>
-            <input class="form-control" type="text" placeholder="http://{s}.tile.cloudmade.com/<API_KEY>/997/256/{z}/{x}/{y}.png" value="<%= tileLayer %>"
-            m-data-target="tileLayer">
+            <span class="input-group-addon"> <b>Title</b> </span>
+            <input class="form-control"  type="text" placeholder="title of the content" value="<%=
+                                                                                               title %>" m-data-target="title">
           </div>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-lg-6">
           <div class="input-group">
-            <span class="input-group-addon"><strong>Shapefile</strong></span>
-            <input class="form-control" type="text" placeholder="" value="<%= shp %>"
-            m-data-target="shp">
+            <span class="input-group-addon"> <strong>Tags</strong> </span>
+            <input class="form-control"  type="text" placeholder="csv of tags for this content"
+                   value="<%= tags %>" m-data-target="tags">
           </div>
         </div>
       </div>
-      <div class="preview"></div>
+    </form>
+    <div class="row">
+      <div id="specific-content"></div>
     </div>
-  </script>
+    <div class="row">
+      <button class="btn btn-primary" id="done">Done</button>
+      <button class="btn btn-default" id="back">Back</button>
+      <!--button class="btn btn-primary" id="updateContent">Update</button-->
+    </div>
+  </div>
+</script>
 
-
-  <script type="text/template" id="media-template">
-    <div class="data">
+<script type="text/template" id="list-view-template">
+  <div class="data">
+    <div class="row">
       <div class="form-group col-lg-6">
         <div class="input-group">
-          <span class="input-group-addon"><strong>path to file</strong></span>
-          <input class="form-control" type="text" placeholder="src" value="<%= src %>"
-          m-data-target="src">
+          <span class="input-group-addon"><strong>URL</strong></span>
+          <input class="form-control" type="text" placeholder="" value="<%= dataSrc %>"
+                 m-data-target="dataSrc">
         </div>
       </div>
-      <div class="preview"></div>
     </div>
-  </script>
+    <div class="row">
+      <div class="form-group col-lg-6">
+        <div class="input-group">
+          <span class="input-group-addon"><strong>Container ID</strong></span>
+          <input class="form-control" type="text" placeholder="" value="<%= containerElement %>"
+                 m-data-target="containerElement">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-6">
+        <div class="input-group">
+          <span class="input-group-addon"><strong>Template ID</strong></span>
+          <input class="form-control" type="text" placeholder="" value="<%= templateElement %>"
+                 m-data-target="templateElement">
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
 
-  <script type="text/template" id="plugin-template">
-    <div class="data">
-      <!--div class="row">
+<script type="text/template" id="map-template">
+  <div class="data">
+    <div class="row">
+      <div class="form-group col-lg-6">
+        <div class="input-group">
+          <span class="input-group-addon"><strong>Tile Provider URL</strong></span>
+          <input class="form-control" type="text" placeholder="http://{s}.tile.cloudmade.com/<API_KEY>/997/256/{z}/{x}/{y}.png" value="<%= tileLayer %>"
+                 m-data-target="tileLayer">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-6">
+        <div class="input-group">
+          <span class="input-group-addon"><strong>Shapefile</strong></span>
+          <input class="form-control" type="text" placeholder="" value="<%= shp %>"
+                 m-data-target="shp">
+        </div>
+      </div>
+    </div>
+    <div class="preview"></div>
+  </div>
+</script>
+
+
+<script type="text/template" id="media-template">
+  <div class="data">
+    <div class="form-group col-lg-6">
+      <div class="input-group">
+        <span class="input-group-addon"><strong>path to file</strong></span>
+        <input class="form-control" type="text" placeholder="src" value="<%= src %>"
+               m-data-target="src">
+      </div>
+    </div>
+    <div class="preview"></div>
+  </div>
+</script>
+
+<script type="text/template" id="plugin-template">
+  <div class="data">
+    <!--div class="row">
         <div class="form-group col-lg-6">
           <div class="input-group">
             <span class="input-group-addon"><strong>path to file</strong></span>
             <input class="form-control" type="text" placeholder="src" value="<%= src %>"
-            m-data-target="src">
+                   m-data-target="src">
           </div>
         </div>
       </div-->
@@ -424,7 +410,7 @@
               <button type="button" class="btn btn-default" value="code">Code</button>
             </div>
             <p class="help-block">
-              <span class="label label-info">Heads Up!</span> 
+              <span class="label label-info">Heads Up!</span>
               <span><small><b> Switch editing mode </b></small></span>
             </p>
           </div>
