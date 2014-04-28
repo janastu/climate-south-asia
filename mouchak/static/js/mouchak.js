@@ -114,20 +114,16 @@
 
   var AppRouter = Backbone.Router.extend({
     routes : {
-        'people': 'showPeople',
         ':page' : 'showPage'
         },
-    showPeople: function(page) {
-      this.showPage('people');
-
-      },
-    showPage: function(page) {
+    showPage: function(page, params) {
       $('.pageview').hide();
       //news pages are rendered on the fly,
       //as feeds have to be fetched.
       /*if(page === 'news') {
        M.rss_view.render();
        }*/
+      M.params = params; /*make available query params at global scope, templates can access the params from M.params.*/
       var id = nameIdMap[page];
       if(!id) {
         this.render404();
