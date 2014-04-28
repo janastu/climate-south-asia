@@ -132,30 +132,32 @@
     }
   });
 
-  var ListView = Backbone.View.extend({
+  var FeedsView = Backbone.View.extend({
     tagName: 'div',
     className: 'list-view',
     initialize: function() {
       _.bindAll.apply(_, [this].concat(_.functions(this)));
       _.bind(this.render, this);
+      _.bind(this.load, this);
+      this.load();
+      },
+    load: function() {
       this.list = new Backbone.Collection();
       this.list.url = 'getDB';
       this.list.fetch({data:{url: this.model.get("dataSrc"),
                              dbvar: ''},
-                       success: this.render});
-
+                             success: this.render});
     },
       render: function() {
-      var childView = new ListContainerView({
+       new FeedContainerView({
         collection: this.list,
         el: $(this.model.get("containerElement")),
         template: _.template($(this.model.get("templateElement")).html())
       });
-          // childView.render();
-    }
+      }
   });
 
-  var ListContainerView = Backbone.View.extend({
+  var FeedContainerView = Backbone.View.extend({
     initialize: function(options) {
       _.bindAll.apply(_, [this].concat(_.functions(this)));
       _.bind(this.render, this);
@@ -190,9 +192,6 @@
           M.rss_view = new view({model: item});
           $(self.el).append(_.template($('#news-template').html()));
         }
-        if(item.get('type') === 'ListView') {
-          new view({model: item});
-        }
         else {
           var item_view = new view({model: item});
           item_view.render(self.el);
@@ -218,7 +217,7 @@
     'table': TableView,
     'plugin': PluginView,
     'map': MapView,
-    'ListView': ListView,
+    'FeedView': FeedsView,
     'PageView': PageView
   };
 })(M);

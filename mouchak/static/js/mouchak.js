@@ -114,8 +114,13 @@
 
   var AppRouter = Backbone.Router.extend({
     routes : {
-      ':page' : 'showPage'
-    },
+        'people': 'showPeople',
+        ':page' : 'showPage'
+        },
+    showPeople: function(page) {
+      this.showPage('people');
+
+      },
     showPage: function(page) {
       $('.pageview').hide();
       //news pages are rendered on the fly,

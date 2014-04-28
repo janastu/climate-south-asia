@@ -10,7 +10,6 @@
     initialize: function() {
     }
   });
-
   var Text = BaseType.extend({
     defaults: _.extend({
       data: "",
@@ -72,7 +71,7 @@
 
   //Create a model, which will accept an url for data-src,
   //the data-src is used to create models further and assign view to it.
-  var ListType = BaseType.extend({
+  var FeedType = BaseType.extend({
     defaults: _.extend({
       dataSrc: "",
       containerElement: "",
@@ -248,10 +247,10 @@
     'map': Map,
     'Page': Page,
     'Pages': Pages,
-    'ListView': ListType
+    'FeedView': FeedType
   };
 
   //content types to render in content menu
-      M.contentTypes = ['text', 'image', 'video', 'table', 'plugin', 'map', 'ListView'];
+  M.contentTypes = ['text', 'image', 'video', 'table', 'plugin', 'map', 'FeedView'];
 
 })(M);

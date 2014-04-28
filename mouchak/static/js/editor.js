@@ -392,8 +392,8 @@
         }));
       }
 
-      else if(type === 'ListView') {
-        var template = _.template($('#list-view-template').html());
+      else if(type === 'FeedView') {
+        var template = _.template($('#feeds-view-template').html());
         $('#specific-content').html(template({
           dataSrc: this.model.get('dataSrc'),
         containerElement: this.model.get('containerElement'),
