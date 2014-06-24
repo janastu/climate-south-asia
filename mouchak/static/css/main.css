@@ -1,4 +1,4 @@
-*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+1*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 
 /*
  * What follows is the result of much research on cross-browser styling.
@@ -852,7 +852,7 @@ margin-top:-3%;
  }
 .contributors
 { 
-margin-left:24%;
+margin-left:25%;
 margin-top:-38%;
  }
 .contributors-content
@@ -861,24 +861,33 @@ margin-left:-27%;
 text-align:justify;
 padding-left:18%;
 margin-top:-2%;
-margin-bottom:2%;
+margin-bottom:6%;
  }
 .img-responsive
 { 
-height:auto;
+height:165px;
 width:70%;
-margin-bottom:5%;
+margin-bottom:7%;
  }
 .img-responsive1 { 
-                   width:250px;
-                   height:200px;
+                   width:43%;
+                  height:165px;
+margin-bottom:7%;
 }
+.contributors-content1
+{ 
+margin-left:-33%;
+text-align:justify;
+padding-left:18%;
+margin-top:-2%;
+margin-bottom:6%;
+ }
 .portfolio-img
 { 
 width:200px; }
 .portfolio
 { 
-margin-left:27%;
+margin-left:25%;
 margin-top:-38%;
  }
 .portfolio-item2
@@ -894,6 +903,20 @@ margin-top:-17%;
 .portfolio2
 { 
 margin-top:3%;
+ }
+.portfolio-item21
+{ 
+margin-left:25%;
+ }
+.portfolio-item22
+{ 
+margin-left:50%;
+margin-top:-13%;
+ }
+.portfolio-item23
+{ 
+margin-left:75%;
+margin-top:-12%;
  }
 .about
 { 
@@ -916,7 +939,7 @@ margin-top:-38%;
                     
                     position: relative;
                     margin-bottom: 2em;
-                    margin-top:-48%;
+                    margin-top:-50%;
 }
 
 .featured-article .block-title { 
@@ -949,7 +972,7 @@ color:black;
 .media-body
 {
 margin-left:24%;
-margin-top:-48%; 
+margin-top:-50%; 
  }
 
 /* Featured Articles List [BS3]
