@@ -1,4 +1,4 @@
-1*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 
 /*
  * What follows is the result of much research on cross-browser styling.
@@ -709,7 +709,9 @@ margin-top:4%;
 .navigations
 { 
 border-bottom:none;
-background:#D3D3D3;
+background:#d97557;
+width:65%;
+border-radius:5px;
 } 
 .nav-tabs
 { 
@@ -717,14 +719,12 @@ border-bottom:none;
  }
 .head
 { 
-margin-left:25%;
+margin-left:17%;
  }
 
 .logo
 { 
-margin-top:-100px;
-margin-right:4px;
-margin-left:13px;
+margin-top:-35%;
  }
 
 .container-fluid
@@ -745,7 +745,8 @@ a.list-group-item.active small {
 /* image thumbnail */
 .thumb { 
     display: block;
-         width: 100%;
+         width: 118%;
+height: 235px;
          
 }
 
@@ -793,26 +794,30 @@ margin-top:-38%;
 { 
 margin-left:24%;
  }
+
+
 .countries
 { 
-margin-left:60px;
-font-size:18px;
+margin-left:35px;
+font-size:20px;
 color:blue;
+margin-top:15%;
  }
 .countries1
 { 
-margin-left:60px;
+margin-left:36px;
 font-size:18px;
-margin-top:95px;
+margin-top:65px;
  }
 
 .form-control
 { 
-width:80%;
+width:50%;
+margin-left:10%;
  }
 .article-news
 { 
-
+margin-top:3%;
  }
 .articles
 {  
@@ -865,13 +870,13 @@ margin-bottom:6%;
  }
 .img-responsive
 { 
-height:165px;
+height:160px;
 width:70%;
 margin-bottom:7%;
  }
 .img-responsive1 { 
                    width:43%;
-                  height:165px;
+                  height:160px;
 margin-bottom:7%;
 }
 .contributors-content1
@@ -884,7 +889,9 @@ margin-bottom:6%;
  }
 .portfolio-img
 { 
-width:200px; }
+width:150px;
+height:200px;
+ }
 .portfolio
 { 
 margin-left:25%;
@@ -893,12 +900,12 @@ margin-top:-38%;
 .portfolio-item2
 { 
 margin-left:33%;
-margin-top:-17%;
+margin-top:-25%;
  }
 .portfolio-item3
 { 
 margin-left:66%;
-margin-top:-17%;
+margin-top:-25%;
  }
 .portfolio2
 { 
@@ -911,17 +918,18 @@ margin-left:25%;
 .portfolio-item22
 { 
 margin-left:50%;
-margin-top:-13%;
+margin-top:-19%;
  }
 .portfolio-item23
 { 
 margin-left:75%;
-margin-top:-12%;
+margin-top:-19%;
  }
 .about
 { 
 margin-left:25%;
 margin-top:-38%;
+padding-right:7%;
  }
 /* Style to article Author */
 .by-author { 
@@ -964,16 +972,234 @@ margin-top:-38%;
 
 .nav-tabs>li>a
 { 
-margin-right:46px;
+margin-right:20px;
 font-weight:bold;
 color:black;
  }
 
 .media-body
 {
-margin-left:24%;
-margin-top:-50%; 
+margin-left:25%;
+margin-top:-50%;
+padding-right:13%;
+padding-left:3%;
+ 
  }
+@media(max-width: 240px)
+{
+.logo
+{  
+margin-top:-9%;
+  }
+.navigations
+{ 
+margin-left:22%;
+ } 
+.home1
+{ 
+margin-top:38%;
+ }
+.media-body
+{ 
+margin-left:2%;
+margin-top:0%;
+ }
+.news-thumb1
+{ 
+margin-left:16%;
+margin-top:0%;
+ }
+.news-thumb
+{ 
+margin-left:20%;
+margin-top:0%;
+ }
+
+ }
+@media (max-width: 320px)
+{
+.news-thumb1 
+{ 
+margin-top:-7%;
+ }
+.news-thumb
+{ 
+margin-top:-7%;
+margin-left:18%;
+ }
+.media-body
+{ 
+margin-left:0%;
+margin-top:0%;
+ }
+.article-news
+{ 
+margin-bottom:8%;
+ }
+.contributors
+{ 
+margin-top:-30%;
+ }
+.interview
+{ 
+margin-top:-30%;
+margin-left: 241px;
+ }
+ }
+@media (max-width: 480px)
+{
+.media-body
+{  
+margin-left:0%;
+margin-top:0%;
+
+ }
+.news-thumb1
+{ 
+margin-top:0%;
+ }
+.news-thumb
+{ 
+margin-left:12%;
+margin-top:0%;
+ }
+.head
+{ 
+margin-left:0%;
+ }
+.logo
+{ 
+margin-top:0%;
+ }
+.news-list
+{ 
+margin-left:0%;
+margin-top:11%;
+ }
+.home1
+{ 
+margin-left:0%;
+ }
+.featured-article
+{ 
+margin-top:0%;
+ }
+}
+
+@media (max-width: 768px)
+{ 
+.navigations
+{ 
+width:100%;
+ }
+.head
+{ 
+margin-left:0%;
+ }
+.logo
+{ 
+margin-top:0%;
+
+ }
+.featured-article
+{ 
+margin-top:0%;
+ }
+.media-body
+{ 
+margin-left:0%;
+margin-top:0%;
+ }
+.news-thumb1
+{ 
+margin-top:0%;
+margin-left:0%;
+ }
+.news-thumb
+{ 
+margin-left:0%;
+margin-top:11%;
+ }
+.news-list
+{ 
+margin-left:0%;
+margin-top:11%;
+ }
+.home1
+{ 
+margin-left:0%;
+ }
+ }
+
+
+
+
+@media (max-width: 1024px)
+{ 
+.home1
+{ 
+margin-top:-15%;
+ }
+.thumb
+{ 
+height:175px;
+ }
+.logo
+{
+width:85%; 
+ }
+.news-list
+{ 
+margin-top:5%;
+ }
+.navigations
+{ 
+width:70%;
+ }
+.head
+{
+margin-left:15%;
+ }
+.contributors
+{
+margin-top:-53%;
+margin-left:24%;
+ }
+.contributors-content
+{ 
+margin-top:0%;
+ }
+.interview
+{ 
+margin-top:-54%%;
+margin-left:243px;
+ }
+.about
+{ 
+ margin-top:-53%
+ }
+.portfolio
+{ 
+margin-top:-53%;
+ }
+.portfolio-item2
+{ 
+margin-top:-33%;
+ }
+.portfolio-item3
+{ 
+margin-top:-33%;
+ }
+.portfolio-item22
+{ 
+margin-top:-25%;
+ }
+.portfolio-item23
+{ 
+margin-top:-25%;
+ }
+ }
+
 
 /* Featured Articles List [BS3]
 --------------------------------------------
