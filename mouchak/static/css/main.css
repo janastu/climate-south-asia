@@ -514,34 +514,7 @@ background-color:#3f3b42;
     visibility: hidden;
 }
 
-@media (max-width:767px) {
-    .wrapper {
-	padding-left: 70px;
-}
-.sidebar-wrapper {
-    left: 70px;
-}
 
-.wrapper.active .container{
-   padding-left: 150px;
-}
-
-.wrapper.active .sidebar-wrapper {
-    left: 150px;
-    width: 150px;
-}
-
-}
-
-.sidebar-wrapper .row {
-  margin: 10px 0;
-}
-
-.link_disabled {
-    pointer-events: none;
-    cursor: none;
-    color: gray;
-}
 
 @media (max-width:450px) {
     .thumbnail {
