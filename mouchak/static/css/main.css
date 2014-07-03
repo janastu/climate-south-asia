@@ -725,7 +725,7 @@ height: 235px;
 
 .news-thumb
 { 
-margin-left:49%;
+margin-left:41%;
 text-align:justify;
 margin-top:-22%;
  }
@@ -767,7 +767,17 @@ margin-top:-38%;
 { 
 margin-left:24%;
  }
-
+.col-text1
+{ 
+padding-right:20%;
+ }
+.events
+{ 
+width:14%;
+text-align:justify;
+margin-top:-22%;
+margin-left:75%;
+ }
 
 .countries
 { 
