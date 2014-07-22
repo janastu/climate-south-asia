@@ -704,7 +704,7 @@ margin-right:-43px;
 
 .logo
 { 
-margin-left:7%;
+margin-left:20%;
  }
 
 .container-fluid
@@ -1145,13 +1145,14 @@ margin-top:11%;
 
 @media (max-width: 1024px)
 { 
+
 .side
 { 
-margin-top:2%;
+margin-top:-9%;
  }
 .home1
 { 
-margin-top:-120%;
+margin-top:-111%;
  }
 .thumb
 { 
@@ -1163,7 +1164,7 @@ width:85%;
  }
 .news-list
 { 
-margin-top:5%;
+margin-top:13%;
  }
 .navigations
 { 
@@ -1171,11 +1172,11 @@ width:70%;
  }
 .head
 {
-margin-left:15%;
+margin-left:23%;
  }
 .contributors
 {
-margin-top:-53%;
+margin-top:-154%;
 margin-left:24%;
  }
 .contributors-content
@@ -1184,16 +1185,16 @@ margin-top:0%;
  }
 .interview
 { 
-margin-top:-54%%;
+margin-top:-153%;
 margin-left:243px;
  }
 .about
 { 
- margin-top:-53%
+ margin-top:-153%;
  }
 .portfolio
 { 
-margin-top:-53%;
+margin-top:-153%;
  }
 .portfolio-item2
 { 
@@ -1210,6 +1211,14 @@ margin-top:-25%;
 .portfolio-item23
 { 
 margin-top:-25%;
+ }
+.news-thumb
+{ 
+margin-top:-29%;
+ }
+.events
+{ 
+margin-top:-29%;
  }
  }
 
