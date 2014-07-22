@@ -692,12 +692,19 @@ border-bottom:none;
  }
 .head
 { 
-margin-left:23%;
+margin-left:235px;
+border-bottom:9px;
+border-style:groove;
+border-left:none;
+border-top:none;
+border-right:none;
+border-bottom-color:rgb(206, 228, 206);
+margin-right:-43px;
  }
 
 .logo
 { 
-margin-top:-35%;
+margin-left:7%;
  }
 
 .container-fluid
@@ -722,7 +729,10 @@ a.list-group-item.active small {
 height: 235px;
          
 }
-
+.side-nav
+{
+margin-left:30%; 
+ }
 .news-thumb
 { 
 margin-left:41%;
@@ -739,7 +749,7 @@ margin-top:-22%;
 .news-list
 { 
 margin-left:24%;
-margin-top:2%;
+margin-top:5%;
  }
 .news-list1
 { 
@@ -759,6 +769,13 @@ font-size:23px;
 margin-left:17%;
 color:green;
  }
+#change-text
+{
+margin-top:-7%;
+font-size:27px;
+text-shadow:4px 5px 10px rgb(121, 89, 89);
+font-weight:bolder; 
+ }
 .home
 { 
 margin-top:-38%;
@@ -766,6 +783,7 @@ margin-top:-38%;
 .home1
 { 
 margin-left:24%;
+margin-top:-63%;
  }
 .col-text1
 { 
@@ -781,26 +799,26 @@ margin-left:75%;
 
 .countries
 { 
-margin-left:35px;
+margin-left:90px;
 font-size:20px;
 color:blue;
-margin-top:15%;
+margin-top:7%;
  }
 .countries1
 { 
-margin-left:36px;
+margin-left:100px;
 font-size:18px;
-margin-top:65px;
+margin-top:21px;
  }
 
 .form-control
 { 
 width:50%;
-margin-left:10%;
+margin-left:30%;
  }
 .article-news
 { 
-margin-top:3%;
+
  }
 .articles
 {  
@@ -824,7 +842,7 @@ margin-top:-39%;
  }
 .interview
 { 
-margin-top:-38%;
+  margin-top:-105%;
 margin-left:326px;
 text-align:justify;
  }
@@ -840,8 +858,8 @@ margin-top:-3%;
  }
 .contributors
 { 
-margin-left:25%;
-margin-top:-38%;
+margin-left:24%;
+margin-top:-105%;
  }
 .contributors-content
 { 
@@ -878,7 +896,7 @@ height:200px;
 .portfolio
 { 
 margin-left:25%;
-margin-top:-38%;
+margin-top:-105%;
  }
 .portfolio-item2
 { 
@@ -911,8 +929,14 @@ margin-top:-19%;
 .about
 { 
 margin-left:25%;
-margin-top:-38%;
+margin-top:-105%;
 padding-right:7%;
+ }
+.side
+{ 
+background-color:rgb(184, 117, 28);
+margin-left:-3%;
+margin-top:-6%;
  }
 /* Style to article Author */
 .by-author { 
@@ -1121,9 +1145,13 @@ margin-top:11%;
 
 @media (max-width: 1024px)
 { 
+.side
+{ 
+margin-top:2%;
+ }
 .home1
 { 
-margin-top:-15%;
+margin-top:-120%;
  }
 .thumb
 { 
