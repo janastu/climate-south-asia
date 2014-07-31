@@ -59,11 +59,25 @@ overflow-y:scroll;
   margin-top: -8px;
 }
 .navWrap {
-  height: 40px;
+  height: 25px;
   width: auto;
   opacity:0.5;
-  margin-left:85px;
-  margin-top: -67px;
+  margin-left:62px;
+  margin-top: -44px;
+  padding-top:7px;
+}
+
+#homeTxt, #aboutTxt, #newsTxt {
+  margin-left:6em;
+
+}
+#contributorTxt{
+margin-left:4em;
+}
+
+#articleTxt {
+  margin-left:5.5em;
+
 }
 .logo
 { 
@@ -113,12 +127,13 @@ margin-top: 0em;
 margin-right:2em;
  }
  .navImg{
-   height: 100px;
+   height: 60px;
    width: 250px;
  }
 .news-thumb
 { 
 text-align:justify;
+margin-top:-2em;
 /*margin-left:41%;
 text-align:justify;
 margin-top:-22%;
@@ -129,6 +144,8 @@ display:-moz;
 .news-thumb1
 { 
 text-align:justify;
+margin-left:-2em;
+margin-top:-2em;
 /*margin-left:16%;
 margin-top:-22%;
 -moz-margin-top:-88%;*/
@@ -159,6 +176,7 @@ padding-right: 5px;
 }
 .news-wrapper1 {
   margin-top: 2em;
+  margin-left:-2em;
 }
 
 #h1
@@ -174,7 +192,7 @@ font-weight: bold;
 #change-text
 {
 margin-top:-1em;
-margin-left: 11em;
+margin-left: 11.5em;
 font-size:27px;
 text-shadow:4px 5px 10px rgb(121, 89, 89);
 font-weight:bolder;
@@ -197,7 +215,6 @@ margin-left:2em;*/
 #searchForm {
   margin-top: -15px;
   border-radius: 5px;
-  margin-left: 26em;
 }
 
 .head
@@ -239,6 +256,7 @@ text-align:justify;
 overflow-y: scroll;
 height:18em;
 margin-left: -1em;
+margin-top:-2em;
 /*width:14%;
 text-align:justify;
 margin-top:-22%;
