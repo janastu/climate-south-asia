@@ -133,7 +133,7 @@ margin-right:2em;
 .news-thumb
 { 
 text-align:justify;
-margin-top:-2em;
+margin-top:-1em;
 /*margin-left:41%;
 text-align:justify;
 margin-top:-22%;
@@ -145,7 +145,7 @@ display:-moz;
 { 
 text-align:justify;
 margin-left:-2em;
-margin-top:-2em;
+margin-top:-1em;
 /*margin-left:16%;
 margin-top:-22%;
 -moz-margin-top:-88%;*/
@@ -256,13 +256,18 @@ text-align:justify;
 overflow-y: scroll;
 height:18em;
 margin-left: -1em;
-margin-top:-2em;
+margin-top:-1em;
 /*width:14%;
 text-align:justify;
 margin-top:-22%;
 margin-left:75%;*/
  }
 
+ .csaFooter {
+   margin-top:-45px;
+   height:50px;
+
+ }
 .countries
 { 
 font-size:20px;
@@ -276,7 +281,7 @@ font-size:20px;
 .subscribeForm
 { 
 width:100%;
-border-radius: 5px;
+border-radius: 20px;
  }
 .article-news
 { 
