@@ -62,21 +62,29 @@ overflow-y:scroll;
   height: 25px;
   width: auto;
   opacity:0.5;
-  margin-left:62px;
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
   margin-top: -44px;
   padding-top:7px;
 }
 
 #homeTxt, #aboutTxt, #newsTxt {
-  margin-left:6em;
+  margin-left:7em;
 
 }
 #contributorTxt{
-margin-left:4em;
+margin-left:5em;
 }
 
+#contributorTxt{
+margin-left:5em;
+}
+#interviewTxt, #resourceTxt {
+  margin-left:6em;
+}
 #articleTxt {
-  margin-left:5.5em;
+  margin-left:7em;
 
 }
 .logo
@@ -121,14 +129,23 @@ height: 235px;*/
 }
 .side-nav
 {
-margin-left:-1.1em;
+margin-left:auto;
 background-color: #c09748; 
 margin-top: 0em;
-margin-right:2em;
+margin-right:auto;
+display:block;
+ }
+
+ #sideWrap {
+   margin-right:2em;
+   margin-left:-1.1em;
  }
  .navImg{
    height: 60px;
    width: 250px;
+   margin-left:auto;
+   margin-right:auto;
+   display:block;
  }
 .news-thumb
 { 
@@ -187,6 +204,9 @@ font-weight: bold;
  }
  a {
    color: rgb(171, 37, 37) ;
+   margin-left:auto;
+   margin-right:auto;
+   display:block;
 
  }
 #change-text
