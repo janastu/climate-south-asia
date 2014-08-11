@@ -357,28 +357,22 @@ margin-top:-38%;
   line-height: 65px;
   display: inline-block;
 }
-/*
-@media (max-width:767px) {
-    #wrapper {
-    padding-left: 70px;
-    transition: all .4s ease 0s;
-}
-#sidebar-wrapper {
-    left: 70px;
-}
-#wrapper.active {
-    padding-left: 150px;
-}
-#wrapper.active #sidebar-wrapper {
-    left: 150px;
-    width: 150px;
-    transition: all .4s ease 0s;
-}*/
-/*side menu toffle end*/
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width :480px) {
+  #change-text {
+    font-size: 14px;
+  }
 #searchForm {
-  margin-top: -15px;
-  border-radius: 5px;
+  margin-top: 15px;
+  width:45%;
+  margin-left:16em;
 }
+
+}
+
+/*side menu toffle end*/
 
 
 
