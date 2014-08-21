@@ -95,11 +95,11 @@ background-color: #c09748;
 
 .head
 { 
-border-style:groove;
+border-style:ridge;
 border-left:none;
 border-top:none;
 border-right:none;
-border-bottom-color:rgb(206, 228, 206);
+border-bottom-color:rgb(230, 212, 187);
 margin-top: 20px;
 height:40px;
  }
@@ -232,7 +232,7 @@ margin-top:-38%;
    right: 0%;
    bottom: 0px;
    z-index: 10;
-   padding-top: 0px;
+   padding-top: 10px;
    padding-bottom: 0px;
    color: #000;
    text-shadow: none;
@@ -251,7 +251,7 @@ margin-top:-38%;
  }
 .carousel-indicators {
  position: relative;
-top:20em;
+top:30em;
 left:20em;
 }
 
