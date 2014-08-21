@@ -23,7 +23,9 @@ html {
     line-height: 1.4;
 }
 
-
+.snippetImg {
+  margin-left:-1em;
+}
 
 
 .col-text {
@@ -41,10 +43,6 @@ background:rgb(230, 212, 187);
 overflow-y:scroll;
  }
 
-.well {
-  border-radius: 25px;
-  padding: 15px;
-}
 
 .portfolio-item {
   margin-left: 2em;
@@ -56,42 +54,37 @@ overflow-y:scroll;
   margin-left: 0em;
   font-weight: bold;
   font-size: 18px;
-  margin-top: -8px;
+  margin-top: -6px;
 }
 .navWrap {
   height: 25px;
   width: auto;
-  opacity:0.5;
-  margin-left:auto;
-  margin-right:auto;
+  opacity:0.7;
   display:block;
   margin-top: -62px;
   padding-top:7px;
+  border-radius:0px;
 }
 
 #homeTxt, #aboutTxt, #newsTxt {
-  margin-left:7em;
-
+margin-left:4em;
 }
 #contributorTxt{
-margin-left:5em;
+  margin-left:2em;
 }
 
-#contributorTxt{
-margin-left:5em;
-}
 #interviewTxt, #resourceTxt {
-  margin-left:6em;
+margin-left:2.5em;
 }
 #articleTxt {
-  margin-left:7em;
 
+margin-left:3.5em;
 }
 .logo
 {
  margin-top:-5em; 
 margin-left:-2em;
-margin-right:3em;
+margin-right:5em;
 background-color: #c09748;
  }
 
@@ -137,7 +130,7 @@ display:block;
  }
 
  #sideWrap {
-   margin-right:3em;
+   margin-right:5em;
    margin-left:-2em;
  }
  .navImg{
@@ -145,10 +138,6 @@ display:block;
    width: 100%;
    margin-bottom: 0.5em;
    padding-right:5px;
-   padding-left:12px;
-   margin-left:auto;
-   margin-right:auto;
-   display:block;
  }
 .news-thumb
 { 
@@ -164,7 +153,7 @@ display:-moz;
 .news-thumb1
 { 
 text-align:justify;
-margin-left:-2em;
+margin-left:-4em;
 margin-top:3em;
 /*margin-left:16%;
 margin-top:-22%;
@@ -194,7 +183,7 @@ padding-right: 5px;*/
 .news-wrapper1 {
   margin-top: 1em;
   display:block;
-  margin-left:-2em;
+  margin-left:-4em;
 }
 
 .heading
@@ -225,7 +214,7 @@ margin-bottom:0.4em;
 #change-text
 {
 margin-top:-0.5em;
-margin-left:-1em;
+margin-left:-2em;
 font-size:27px;
 font-weight:bolder;
 font-style: italic;
@@ -260,10 +249,16 @@ margin-top:-38%;
    position: absolute;
    top: 0px;
  }
- 
+.carousel-indicators {
+ position: relative;
+top:20em;
+left:20em;
+}
+
  .carousel-control.left, 
  .carousel-control.right {
    background-image: none;
+   display:none;
  }
  /*carousel  * * end*/
 
@@ -432,7 +427,7 @@ padding-top:1em;
 { 
 text-align:justify;
 overflow-y: scroll;
-height:21em;
+height:24em;
 margin-left: 0em;
 margin-top:3em;
 background-color:#ddd;
@@ -464,11 +459,9 @@ font-size:20px;
 
 .subscribeForm
 { 
-width:92%;
-margin-left:2em;
+margin-left:auto;
 margin-right:auto;
 display:block;
-margin-top:1em;
 
  }
 .tagCloud {
@@ -578,7 +571,7 @@ margin-top:-19%;
 .about
 { 
 padding-top:10px;
-margin-left:-2em;
+margin-left:-4em;
  }
 /* Style to article Author */
 .by-author { 
@@ -597,7 +590,7 @@ margin-left:-2em;
 .featured-article { 
                     
                     margin-top: -1em;
-                    margin-left: -2em;
+                    margin-left: -4em;
 
                     /*margin-bottom: 2em;
                     margin-top:-50%;*/
