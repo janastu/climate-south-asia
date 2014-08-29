@@ -22,87 +22,13 @@ html {
     font-size: 1em;
     line-height: 1.4;
 }
-.form-control {
-  width:75%;
-  height:30px;
-}
-.btn {
-  padding: 4px 8px;
-}
-.snippetImg {
-  margin-left:-1em;
-}
-#homeImg{
-background-image: url("/static/uploads/Barnyard.jpg");
-height: auto;
-width: 100%;
-}
 
-#aboutImg{
-background-image: url("/static/uploads/Ragi.JPG");
-height: auto;
-width: 100%;
-}
-#articleImg{
-background-image: url("/static/uploads/Bajra.jpg");
-height: auto;
-width: 100%;
-}
-#intImg{
-background-image: url("/static/uploads/Proso.jpg");
-height: auto;
-width: 100%;
-}
-#newsImg{
-background-image: url("/static/uploads/Kodo_millet.jpg");
-height: auto;
-width: 100%;
-}
-#contriImg{
-background-image: url("/static/uploads/Foxtail.JPG");
-height: auto;
-width: 100%;
-}
-#resourceImg{
-background-image: url("/static/uploads/Pearl_Millet.JPG");
-height: auto;
-width: 100%;
-}
 .col-text {
     padding:0px 10px 0px 0px;
     width:18%;
 margin-left:17%;
 text-align:center;
 color:rgb(1, 55, 40);
-}
-/* main theme start */
-
-body
-{ 
-background:rgb(230, 212, 187);
-overflow-y:scroll;
- }
-
-
-.portfolio-item {
-  margin-left: 2em;
-  margin-right: 2em;
-}
-
-.navtext {
-  color: black;
-  margin: 0 auto;
-  font-weight: bold;
-  font-size: 18px;
-  text-align:center;
-  opacity:0.6;
-  border-radius:35px;
-  background-color:#f5f5f5;
-  width:75%;
-}
-.navWrap {
-  padding:25px;
-  margin-bottom:5px;
 }
 
 /*#homeTxt, #aboutTxt, #newsTxt {
@@ -124,26 +50,6 @@ margin-left:3.5em;
 
 
 
-.head
-{ 
-border-style:ridge;
-border-left:none;
-border-top:none;
-border-right:none;
-border-bottom-color:rgb(230, 212, 187);
-margin-top: 8px;
-height:30px;
- }
-
-.socialIcons {
-  width:30px;
-  margin-left:2em;
-}
-.container-fluid
-{ 
- background-color: rgb(230, 212, 187);
-}
-
 
 /* image thumbnail */
 .thumb { 
@@ -154,42 +60,6 @@ height:30px;
 height: 235px;*/
          
 }
-.side-nav
-{
-margin-left:auto;
-background-color: #c09748; 
-margin-top: 0em;
-margin-right:auto;
-display:block;
- }
-
-
- .navImg{
-   height: auto;
-   width: 100%;
-   margin-bottom: 0.5em;
-   padding-right:5px;
- }
- .navbar {
-   border:none;
- }
- .glyphicon {
-   color:#000;
- }
-
-
-.heading
-{ 
-font-size:23px;
-color:#708005;
-font-weight: bold;
-padding-top:0.4em;
-margin-bottom:0.4em;
- }
- a {
-   color: rgb(171, 37, 37) ;
-
- }
 /*
  #head-filler {
    background-image: url('/static/uploads/bg-head.png');
@@ -206,61 +76,6 @@ margin-bottom:0.4em;
 margin-top:-38%;
  }
 /* main theme end */
-/* carousel start */
- .carousel-caption {
-   position: relative;
-   left: 0%;
-   right: 0%;
-   bottom: 0px;
-   z-index: 10;
-   padding-top: 10px;
-   padding-bottom: 0px;
-   color: #000;
-   text-shadow: none;
-   & .btn {
-     text-shadow: none; // No shadow for button elements in carousel-caption
-   }
- }
- 
- .carousel {
-   position: relative;
- }
- 
-
- .carousel-control.left, 
- .carousel-control.right {
-   background-image: none;
-  
- }
- /*carousel  * * end*/
-
-/* side menu toggle start */
-#wrapper {
-    padding-left: 70px;
-    transition: all .4s ease 0s;
-    height: 100%
-}
-
-#sidebar-wrapper {
-    margin-left: -150px;
-    left: -150px;
-    width: 300px;
-    position: relative;
-    height: 100%;
-    z-index: 10000;
-    transition: all .4s ease 0s;
-}
-
-.sidebar-nav {
-    display: block;
-    float: left;
-    width: auto;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    margin-left:16em;
-
-}
 #page-content-wrapper {
     padding-left: 0;
     margin-left: 0;
@@ -374,12 +189,7 @@ a.list-group-item.active small {
 /*margin-left:24%;
 margin-top:-34%;*/
  }
-.col-text1
-{ 
-padding-right:4em;
-padding-left:0px;
-padding-top:1em;
- }
+
  .csaFooter {
    margin-top:-45px;
    height:50px;
@@ -581,7 +391,7 @@ padding-right:5%;
 font-size:23px;
 color:green;
  }
-.home2
+.I2
 { 
 
  }
