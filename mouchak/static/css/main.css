@@ -18,10 +18,6 @@ textarea {
     color: #222;
 }
 
-html {
-    font-size: 1em;
-    line-height: 1.4;
-}
 
 .col-text {
     padding:0px 10px 0px 0px;
@@ -31,21 +27,6 @@ text-align:center;
 color:rgb(1, 55, 40);
 }
 
-/*#homeTxt, #aboutTxt, #newsTxt {
-margin-left:4em;
-}
-#contributorTxt{
-  margin-left:2em;
-}
-
-#interviewTxt, #resourceTxt {
-margin-left:2.5em;
-}
-#articleTxt {
-
-margin-left:3.5em;
-}
-*/
 
 
 
@@ -60,21 +41,6 @@ margin-left:3.5em;
 height: 235px;*/
          
 }
-/*
- #head-filler {
-   background-image: url('/static/uploads/bg-head.png');
-   margin-top:-2em;
-   margin-left:-3em;
-   margin-right:2em;
-   padding-right:2em;
-   height:53px;
- }
-*/
-
-.home
-{ 
-margin-top:-38%;
- }
 /* main theme end */
 #page-content-wrapper {
     padding-left: 0;
@@ -212,16 +178,7 @@ margin-right:auto;
 display:block;
 
  }
-.tagCloud {
-  margin-left:2em;
-  
 
-}
-
-.article-news
-{ 
-/*margin-top:2%;*/
- }
 .articles
 {  
 margin-top:-38%;
