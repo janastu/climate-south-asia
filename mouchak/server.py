@@ -366,15 +366,6 @@ def getDB():
         response.headers['Content-Type'] = 'application/json'
         return response
 
-@app.route('/getDB')
-def getDB():
-    if flask.request.args['dbvar'] == '':
-        request = requests.api.get(flask.request.args['url'])
-        response = flask.make_response()
-        response.data = json.dumps(request.json())
-        response.headers['Content-Type'] = 'application/json'
-        return response
-
 app.config.from_object(conf)
 app.config['PLUGIN_UPLOAD_FOLDER'] = PLUGIN_UPLOAD_FOLDER
 app.config['FILE_UPLOAD_FOLDER'] = FILE_UPLOAD_FOLDER
