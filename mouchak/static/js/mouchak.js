@@ -218,7 +218,6 @@
     });
   };
 
-
   // append attributes to elements from the model
   M.appendAttrs = function(model, el) {
     _.each(model.get('attr'), function(val, key) {
