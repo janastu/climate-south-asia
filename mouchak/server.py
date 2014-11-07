@@ -182,7 +182,7 @@ def updatePage(_id):
         print res
         if res['err'] is None:
             requests.post(conf.SEARCH_SITE+'/update',
-                          {'content': changedPage, 'id': _id,
+                          {'content': json.dumps(changedPage), 'id': _id,
                            'index': 'climatesouthasia.pantoto.org',
                            'doc_type': 'html'})
             print changedPage
