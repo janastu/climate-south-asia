@@ -53,6 +53,7 @@ dbClient = pymongo.MongoClient()
 db = dbClient[conf.DB]
 siteContent = db['content']
 siteMenu = db['menu']
+analytics_coll = db ['analytics']
 if siteMenu.find_one() is None:
     siteMenu.insert({'customMenu': False, 'menuOrder': [], 'html': ''})
 
@@ -353,7 +354,26 @@ def removeFile(filename):
     res = os.remove(filepath)
     print res
     return '200 OK'
-
+#CSA needs analytics
+@app.route('/analytics', methods=['GET', 'POST'])
+def analytics():
+  response = flask.make_response()
+  if flask.request.method == 'GET':
+    #TODO: gather analytics data from db and send back a HTML rendering it
+    pass
+  elif flask.request.method == 'POST':
+    if 'type' not in flask.request.form:
+      abort(400)
+      
+    data = {}
+    data['type'] = flask.request.form['type']
+    if data['type'] == 'pageview':
+      data['page'] = flask.request.form['page']
+      
+    print data
+    analytics_coll.insert(data)
+    total_hits = analytics_coll.find({'type': 'pageview'}).count()
+    return flask.jsonify(total_hits=total_hits)
 
 @app.route('/robots.txt')
 @app.route('/crossdomain.xml')

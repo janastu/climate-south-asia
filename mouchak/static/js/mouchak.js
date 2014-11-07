@@ -12,6 +12,8 @@
     },
     initialize: function() {
       _.bindAll.apply(_, [this].concat(_.functions(this)));
+      this.$pageview_counter = $('#pageview-counter');
+
     },
     render: function() {
       var menu = new M.types.model.menu(M.site_content.menu);
@@ -22,7 +24,26 @@
     updateBreadcrumbs: function(event) {
       //TODO: write code to use bootstrap's breadcrumbs to render a
       // navigational breadcrumb
-    }
+    },
+       recordPageView: function(page) {
+         var self = this;
+         $.ajax({
+           url: M.AnalyticsURL(),
+                  type: 'POST',
+                  data: {'type': 'pageview', 'page': page},
+                  success: function(data) {
+                      //console.log('recorded by server');
+                         self.updatePageViewCounter(data);
+                    },
+            error: function(jqxhr, error, status_text) {
+                        console.log('Unable to post page view analytics');
+                        console.log(error, status_text);
+                      }
+              });
+            },
+        updatePageViewCounter: function(data) {
+                this.$pageview_counter.html(data.total_hits);
+                }
   });
 
   var NavigationView = Backbone.View.extend({
@@ -139,6 +160,7 @@
       }
       //console.log('navclicked');
       M.appView.navView.trigger('navclicked');
+      M.appView.recordPageView(page);
     },
     render404: function() {
       $('.pageview').hide();
