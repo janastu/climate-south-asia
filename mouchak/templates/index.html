@@ -2,8 +2,6 @@
 
 {% block head %}
   <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
-  <link rel="stylesheet" href="{{url_for('static',
-  filename='css/csa_fixed_theme.css')}}">
   <title> {{ title }} </title>
 {% endblock %}
 
@@ -36,6 +34,8 @@
   <script src="{{url_for('static', filename='js/mouchak.js')}}"></script>
   <script src="{{url_for('static', filename='js/models.js')}}"></script>
   <script src="{{url_for('static', filename='js/views.js')}}"></script>
+ <script src="{{url_for('static', filename='js/lib/jQuery.awesomeCloud.plugin-master/jquery.awesomeCloud-0.2.min.js')}}"></script>
+
 {% endblock %}
 
 {% block templates %}
@@ -118,5 +118,7 @@
       <img src="<%= src %>">
     </div>
   </script>
-
+  <script type="text/javascript">
+    aloha.dom.query('.aloha-editable', document).forEach(aloha);
+                                   </script>
 {% endblock %}

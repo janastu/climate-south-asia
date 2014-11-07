@@ -5,21 +5,22 @@
 html, body {
   height: auto;
   min-height: 1080px;
-background:#fff;
+background:#7d6640;
 font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 width:960px;
 margin:0 auto;
 }
 
 #navigation {
-  margin-left:-15px;
   margin-right:13px;
   position:absolute;
+  top:0px;
   float:left;
   width:215px;
-  height:94%;
+  height:100%;
   display:table-cell;
   background-color:#c09748;
+  z-index:1;
 }
 
 #container
@@ -30,6 +31,36 @@ height:100%;
 min-height:1080px;
 float:left;
 display:table;
+padding-left:0px;
+ }
+
+ #subscribeForm {
+   width:206px;
+   position:relative;
+   left:25px;
+ }
+
+ .subscribeForm {
+   position:relative;
+   left:-25px;
+ }
+
+ #subscribeFormSubmit {
+   position:relative;
+   top:-30px;
+   left:151px;
+   border-radius:0px;
+ }
+
+ #twitterFollow{
+   position:relative;
+   top:-26px;
+ }
+
+ #fbFollow {
+   position:relative;
+   top:-67px;
+   left:51px;
  }
 
 #content-container {
@@ -42,6 +73,7 @@ display:table;
 }
 .form-control {
   height:30px;
+  border-radius:0px;
 }
 .btn {
   padding: 4px 8px;
@@ -80,7 +112,7 @@ margin-top: 8px;
 height:40px;
 width:960px;
 position:relative;
-left:-15px;
+left:15px;
  }
 #search-container {
   position:relative;
@@ -100,10 +132,8 @@ left:-15px;
 
 .side-nav
 {
-margin-left:auto;
-margin-top: 0em;
-margin-right:auto;
-display:block;
+  position:relative;
+  top:180px;
  }
 
 
@@ -118,15 +148,15 @@ display:block;
    position:absolute;
    width:207px;
    left:4px;
-   top:138px;
  }
  .glyphicon {
    /*color:#fff;*/
  }
 #tagCloud {
- width: 200px; 
  height: 500px;
  position:relative;
+ top:-60px;
+ left:-4px;
 }
 .heading
 { 
@@ -150,7 +180,7 @@ margin-bottom:0.4em;
   width:960px;
   position:relative;
   top:-2px;
-  left:-15px;
+  left:15px;
 }
 /* carousel start */
  .carousel-caption {
@@ -262,7 +292,7 @@ width: 100%;
 .post {
   position:relative;
   top:-20px;
-  left:218px;
+  left:230px;
   width:700px;
 }
 .content {
@@ -673,19 +703,29 @@ font-weight:bolder;
 font-style: italic;
 color: #797676;
 position:relative;
-left:75px;
+left:57px;
  }
  .side-nav {
-   padding-bottom: 38%;
  }
 #searchForm {
   border-radius: 5px;
   position:relative;
-  left:36%;
+  left:381px;
 }
 .navWrap:hover .navtext {
   background:#fff;
   opacity:1;
+}
+
+#search-btn {
+  border-radius:0px;
+  position:relative;
+  left:-35px;
+  width:34px;
+}
+
+a {
+  display:block;
 }
 a:hover {
   text-decoration:none;
@@ -693,9 +733,6 @@ a:hover {
 
 .logo
 {
- margin-top:-48px; 
-/*margin-right:4em;*/
-background-color: #c09748;
 position:absolute;
 width:215px;
  }
@@ -709,7 +746,7 @@ width:215px;
                     height:250px;
                     position:absolute;
                     top:10px;
-                    left:189px;
+                    left:200px;
 
 }
 
@@ -720,15 +757,15 @@ text-align:justify;
 margin-left: 0em;
 background-color:#eee;
 border:1px solid #ccc;
-width:280px;
+width:265px;
 position:absolute;
-left:691px;
-top:253px;
-height:22em;
+left:705px;
+top:265px;
+height:30em;
  }
 
 .featured-events-list {
-height:16em;
+height:25em;
 overflow-y:scroll;
 padding-left:5px;
 padding-right:5px;
@@ -759,7 +796,7 @@ text-align:justify;
 width:280px;
 position:absolute;
 top:250px;
-left:458px;
+left:468px;
  }
 
 .news-thumb1
@@ -768,25 +805,29 @@ text-align:justify;
 width:280px;
 position:absolute;
 top:250px;
-left:219px;
+left:230px;
  }
 
 .news-list1
 { 
+  width:230px;
 border-top:1px solid;
 font-size:12px;
 color:#708005;
 text-align:justify;
 font-weight:bold;
+margin-bottom:-10px;
  }
 
 .news-list2
-{ 
+{
+ width:230px; 
 border-top:1px solid;
 font-size:12px;
 color:#708005;
 font-weight:bold;
 text-align:justify;
+margin-bottom:-10px;
  }
 
  #event-align {
@@ -796,17 +837,17 @@ text-align:justify;
  }
 
 .news-wrapper2 {
-  width:280px;
+  width:260px;
   position:absolute;
-  top:587px;
-  left:459px;
+  top:575px;
+  left:469px;
 }
 
 .news-wrapper1 {
- width:280px;
+ width:260px;
 position:absolute;
-top:587px;
-left:219px;
+top:575px;
+left:231px;
 }
 
 .col-text1
@@ -822,7 +863,7 @@ padding-left:0px;
 text-align:justify;
 position:absolute;
 top:10px;
-left:203px;
+left:214px;
 /*margin-top:-1%;
 margin-left:-2%;*/
  }
@@ -841,6 +882,15 @@ margin-left:-2%;*/
   margin-top:-1%;*/
 }
 
+.snippetWrap{
+  position:relative;
+  left:10px;
+}
+
+.blockWrap {
+  position:relative;
+  left:11px;
+}
 #disqus_thread {
   position:relative;
   top:0px;
