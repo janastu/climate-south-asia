@@ -181,8 +181,10 @@ def updatePage(_id):
                                  changedPage)
         print res
         if res['err'] is None:
-            requests.post(conf.SEARCH_SITE+'/update/climatesouthasia.pantoto.org/html',
-                          {'content': changedPage, 'id': _id})
+            requests.post(conf.SEARCH_SITE+'/update',
+                          {'content': changedPage, 'id': _id,
+                           'index': 'climatesouthasia.pantoto.org',
+                           'doc_type': 'html'})
             print changedPage
             #return flask.jsonify(status='ok', page=changedPage)
             return flask.jsonify(changedPage)
