@@ -918,7 +918,10 @@ margin-left:-2%;*/
   top:0px;
   left:0px;
 }
-
+.post-tag-foot {
+  position:relative;
+  left:-8px;
+}
 .contributors-content
 { 
 text-align:justify;
