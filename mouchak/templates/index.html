@@ -2,6 +2,9 @@
 
 {% block head %}
   <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+  <!--link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css"-->
+
+
   <title> {{ title }} </title>
 {% endblock %}
 
@@ -28,6 +31,24 @@
       M.init();
     };
   </script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '366171820228346',
+      xfbml      : true,
+      version    : 'v2.2'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 
 {% endblock %}
 
@@ -53,6 +74,18 @@
       <a href="<%= link %>">Read More</a>
     </div>
   </script>
+  <script type="text/template" id="text-template">
+    <div class="text-content">
+      <h4> <%= title %> </h4>
+      <p> <%= data %> </p>
+      <span class="post-tag-foot col-md-offset-3 col-lg-offset-3"> This Article
+        is tagged  <% _.each(tags, function(tag){ %>
+           <a href="#search?type=tags&q=<%=tag%>" target="_blank"> <%= tag
+            %></a>,
+          <% }); %>
+       </span>
+    </div>
+    </script>
 
   <!-- navigation templates
     the ones with .nav-type can be used interchangbly to render different
@@ -61,7 +94,7 @@
   -->
   <script type="text/template" id="nav-bar-template" class="nav-type">
     <div class="navbar navbar-default" role="navigation">
-      <!-- Brand and toggle get grouped for better mobile display -->
+      <!-- brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
           <span class="sr-only">Toggle navigation</span>
