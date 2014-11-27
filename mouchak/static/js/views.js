@@ -4,17 +4,24 @@
   var TextView = Backbone.View.extend({
     tagName: 'div',
     className: '',
+
     initialize: function() {
       _.bindAll.apply(_, [this].concat(_.functions(this)));
       _.bind(this.render, this);
     },
     render: function(el) {
+      var template =  _.template($("#text-template").html());
       $(el).append(this.el);
+      var tags = this.model.toJSON().tags; 
+      console.log(tags);
+      $(this.el).append(template(this.model.toJSON()));
+      M.appendAttrs(this.model, this.el);
+      /*$(el).append(this.el);
       var title = this.model.get('title') || '';
       var str = '<h4>'+ title +'</h4>'+'<p>' +
             this.model.get('data') + '</p>'+'<span class="post-tag-foot col-lg-offset-3 col-md-offset-3 col-xs-offset-3 col-sm-offset-3">'+ 'This Article is Tagged: '+this.model.get('tags') + '</span>';
       $(this.el).html(str);
-      M.appendAttrs(this.model, this.el);
+      M.appendAttrs(this.model, this.el);*/
     }
   });
 
