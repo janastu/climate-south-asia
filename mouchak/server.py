@@ -181,16 +181,6 @@ def updatePage(_id):
         print '======='
         res = siteContent.update({'_id': bson.ObjId(_id)},
                                  changedPage)
-<<<<<<< HEAD
-        print res
-        if res['err'] is None:
-            requests.post(conf.SEARCH_SITE+'/update',
-                          {'content': json.dumps(changedPage), 'id': _id,
-                           'index': 'climatesouthasia.pantoto.org',
-                           'doc_type': 'html'})
-=======
-        if 'ok' in res and res['ok'] == 1:
->>>>>>> 00bff281229e4d8deacc48e69bca880a24273f53
             print changedPage
             #return flask.jsonify(status='ok', page=changedPage)
             return flask.jsonify(changedPage)
