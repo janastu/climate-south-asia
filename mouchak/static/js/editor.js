@@ -169,6 +169,9 @@
         title: this.model.get('title'),
         children: this.model.get('children'),
         content: this.listContent(),
+        categories: this.model.get('categories'),
+        tags: this.model.get('tags'),
+        published: this.model.get('published'),
         checked: this.model.get('showNav') ? 'checked="checked"' : ''
       }));
 
@@ -261,12 +264,17 @@
     },
     updatePage: function(event) {
       event.preventDefault();
-      var name = $('#name').val();
+      var name = $('#title').val().replace(/\s+/g, '-').toLowerCase();
       var title = $('#title').val();
+      var categories = $("#categories").val().split(',');
+      var tags = $("#tags").val().split(',');
+      var published = $("#publish-status").is(':checked');
       var children = [];
       //var children = $('#children').val();
       //children = (children === '') ? [] : children.split(',');
-      this.model.set({'name': name, 'title': title, 'children': children});
+      this.model.set({'name': name, 'title': title,
+                      'children': children, 'categories':categories,
+                      'tags': tags, 'published': published});
 
       if($('#showNav').is(':checked')) {
         this.model.set({'showNav': true});
@@ -421,8 +429,8 @@
         var template = _.template($('#feeds-view-template').html());
         $('#specific-content').html(template({
           dataSrc: this.model.get('dataSrc'),
-        containerElement: this.model.get('containerElement'),
-        templateElement: this.model.get('templateElement')
+          containerElement: this.model.get('containerElement'),
+          templateElement: this.model.get('templateElement')
           }));
       }
     },
@@ -511,7 +519,7 @@
         processData: false,
         contentType: false,
         success: function(response) {
-          self.model.set({'src': response.path})
+          self.model.set({'src': response.path});
           self.render();
           M.editor.hideOverlay();
           //console.log(self.model.toJSON());

@@ -12,7 +12,7 @@
   });
   var Text = BaseType.extend({
     defaults: _.extend({
-      data: "",
+      data: ""
     }, BaseType.prototype.defaults),
     initialize: function() {
       BaseType.prototype.initialize.call(this, arguments);
@@ -171,6 +171,9 @@
       title: "",
       children: [],
       content: [],
+      categories: [],
+      tags: [],
+      published: false,
       showNav: true
     },
     initialize: function() {
