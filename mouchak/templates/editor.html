@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% block head %}
-<link rel="stylesheet" href="{{url_for('static', filename='css/editor.css')}}">
-<title> Editing.. | {{ title }} </title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/editor.css')}}">
+  <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+  <title> Editing.. | {{ title }} </title>
 {% endblock %}
 
 {% block body %}
@@ -36,13 +37,15 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{url_for('static', filename='js/lib/tinymce/tinymce.min.js')}}"></script>
-<script src="{{url_for('static', filename='js/lib/tinymce/jquery.tinymce.min.js')}}"></script>
-<script src="{{url_for('static', filename='js/lib/ace/ace.js')}}"></script>
-<script src="{{url_for('static', filename='js/mouchak.js')}}"></script>
-<script src="{{url_for('static', filename='js/models.js')}}"></script>
-<script src="{{url_for('static', filename='js/views.js')}}"></script>
-<script src="{{url_for('static', filename='js/editor.js')}}"></script>
+  <script src="{{url_for('static', filename='js/lib/tinymce/tinymce.min.js')}}"></script>
+  <script src="{{url_for('static', filename='js/lib/tinymce/jquery.tinymce.min.js')}}"></script>
+  <script src="{{url_for('static', filename='js/lib/ace/ace.js')}}"></script>
+  <script src="{{url_for('static', filename='js/mouchak.js')}}"></script>
+  <script src="{{url_for('static', filename='js/models.js')}}"></script>
+  <script src="{{url_for('static', filename='js/views.js')}}"></script>
+  <script type="text/javascript" 
+    src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+  <script src="{{url_for('static', filename='js/editor.js')}}"></script>
 {% endblock %}
 
 {% block templates %}
@@ -160,16 +163,17 @@
            </tr>
          </tbody>
        </table>
-      <table class="table table-bordered table-condensed table-hover">
-        <tbody>
-          <tr class="active"> <th><h4> Page Title </h4></th>
-            <th> <h4> slug </h4> </th>
+      <table id="pageTable" class="table table-bordered table-condensed table-hover">
+        <thead>
+          <tr class="active">
+            <th><h4> Page Title </h4></th>
+            <th><h4> Slug </h4> </th>
             <th> <h4> Published </h4> </th>
             <th> <h4> Categories </h4> </th>
             <th> <h4> Tags </h4> </th>
             <th> <h4> Delete </h4> </th>
-            <tr>
-            </tbody>
+          </tr>
+        </thead>
             <tbody id="pagelist">
 
               </tbody>
@@ -181,8 +185,7 @@
     <tr class="pagename">
       <td><a class="disp" id="<%= id %>" href="javascript:void(0);"><%= title 
           %></a></td>
-      <td><a class="disp" id="<%= id %>" href="javascript:void(0);"><%= name%>
-      </a></td> 
+      <td><%= name %></td> 
       <td><%= published %> </td>
       <td><%= categories %> </td>
       <td><%= tags %> </td>
@@ -197,9 +200,9 @@
 
   <script type="text/template" id="page-template">
     <div class="page">
-      <div id="closePage" class="pull-right">
-        <span class="glyphicon glyphicon-remove"></span> 
-      </div>
+        <div id="closePage" class="pull-right">
+          <span class="glyphicon glyphicon-remove"></span>
+        </div>
       <div class="row">
         <h4> <strong><%= title %></strong> : Page Details </h4>
         <% if (published) { %>
@@ -528,7 +531,16 @@
   <script type="text/template" id="uploads-template">
     <div class="page">
       <div><h4> All your uploads </h4></div>
-      <div id="uploads-list" class="well">
+      <div  class="table-responsive">
+        <table id="uploads-list" class="table table-bordered table-condensed table-hover ">
+          <thead>
+            <tr class="active" >
+            <th> Icon Here </th>
+            <th> Path to file </th>
+            <th> Delete file </th>
+            </tr>
+          </thead>
+        </table>
       </div>
       <hr>
       <div class="row">
@@ -543,21 +555,23 @@
   </script>
 
   <script type="text/template" id="uploaded-item-template">
-    <div class="uploaded-item row">
-      <span> &lt;icon here&gt; </span>
-      <!--span class="uploaded-item-name"> <%= filename %> </span-->
-      <span class="uploaded-item-path">
+    <tr class="uploaded-item ">
+      <td> <span>&lt;icon here&gt;</span> </td>
+       <!--span class="uploaded-item-name"> <%= filename %> </span-->
+      <td> <span class="uploaded-item-path">
         <a href="<%= M.UploadsURL() + filename %>">
           <%= M.UploadsURL() + filename %>
         </a>
       </span>
-      <span class="pull-right">
+    </td>
+    <td> <span class="pull-right">
         <a href="javascript:void(0);" class="remove" for="<%= filename %>">
           <span class="glyphicon glyphicon-trash"></span>
         </a>
       </span>
+    </td>
       <span class="clearfix"></span>
-    </div>
+    </tr>
   </script>
 
 {% endblock %}
