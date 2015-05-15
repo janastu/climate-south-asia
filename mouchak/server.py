@@ -180,10 +180,16 @@ def updatePage(_id):
         print changedPage
         print '======='
         res = siteContent.update({'_id': bson.ObjId(_id)},
-                                 changedPage)
-            print changedPage
-            #return flask.jsonify(status='ok', page=changedPage)
-            return flask.jsonify(changedPage)
+            changedPage)     
+        print res
+        #if res['err'] is None:
+         # requests.post(conf.SEARCH_SITE+'/update',
+          #              {'content': json.dumps(changedPage), 'id': _id,
+           #               'index': 'climatesouthasia.pantoto.org',
+            #              'doc_type': 'html'})
+         # print changedPage
+              #return flask.jsonify(status='ok', page=changedPage)
+        return flask.jsonify(changedPage)
 
     elif flask.request.method == 'DELETE':
         delPage = flask.request.url
