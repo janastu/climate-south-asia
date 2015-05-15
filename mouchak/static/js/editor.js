@@ -20,6 +20,7 @@
       this.template = _.template($('#page-list-template').html());
       this.listTemplate = _.template($('#page-list-item-template').html());
       // append this.el to container #pages
+      this.$el.addClass('container');
       $('#content-container').append(this.$el);
       this.$el.append(this.template());
       this.$pagelist = $('#pagelist');
@@ -38,6 +39,10 @@
       this.$pagelist.html('');
       _.each(M.pages.models, function(page) {
         this.$pagelist.append(this.listTemplate({
+          title: page.get('title'),
+          published: page.get('published'), 
+          categories: page.get('categories'),
+          tags: page.get('tags'),
           name: page.get('name'),
           id: page.id
         }));
@@ -129,6 +134,7 @@
     id: 'page',
     events: {
       'click #updatePage': 'updatePage',
+      'click #closePage' : 'closePage',
       'click #copyPage': 'duplicatePage',
       'click .addContent' : 'addContent',
       'click .content-item': 'showContent',
@@ -172,6 +178,8 @@
         categories: this.model.get('categories'),
         tags: this.model.get('tags'),
         published: this.model.get('published'),
+        seoimagesrc: this.model.get('seoimagesrc'),
+        seotext: this.model.get('seotext'),
         checked: this.model.get('showNav') ? 'checked="checked"' : ''
       }));
 
@@ -268,13 +276,15 @@
       var title = $('#title').val();
       var categories = $("#categories").val().split(',');
       var tags = $("#tags").val().split(',');
+      var seoimagesrc = $("#seoimageurl").val();
+      var seotext = $("#seotext").val();
       var published = $("#publish-status").is(':checked');
       var children = [];
       //var children = $('#children').val();
       //children = (children === '') ? [] : children.split(',');
       this.model.set({'name': name, 'title': title,
                       'children': children, 'categories':categories,
-                      'tags': tags, 'published': published});
+                      'tags': tags, 'seoimagesrc': seoimagesrc, 'seotext': seotext, 'published': published});
 
       if($('#showNav').is(':checked')) {
         this.model.set({'showNav': true});
@@ -333,6 +343,11 @@
         newpageview.render();
         M.editor.pageview = newpageview;
       }});
+    },
+
+    closePage: function(event) {
+      event.preventDefault();
+      M.editor.pageview.remove();
     }
   });
 
