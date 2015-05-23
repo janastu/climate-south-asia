@@ -13,3 +13,6 @@ mouchak/static/user_plugins/*
 
 #Ignore examples directory of any library
 examples/
+
+#Ignore logme
+logme
