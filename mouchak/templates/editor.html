@@ -2,7 +2,9 @@
 
 {% block head %}
   <link rel="stylesheet" href="{{url_for('static', filename='css/editor.css')}}">
-  <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/animate.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',
+  filename='js/lib/DataTables-1.10.7/media/css/jquery.dataTables.min.css')}}">
   <title> Editing.. | {{ title }} </title>
 {% endblock %}
 
@@ -43,18 +45,23 @@
   <script src="{{url_for('static', filename='js/mouchak.js')}}"></script>
   <script src="{{url_for('static', filename='js/models.js')}}"></script>
   <script src="{{url_for('static', filename='js/views.js')}}"></script>
-  <script type="text/javascript" 
-    src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript"
+    src="{{url_for('static',
+    filename='js/lib/DataTables-1.10.7/media/js/jquery.dataTables.min.js')}}"></script>
   <script src="{{url_for('static', filename='js/editor.js')}}"></script>
 {% endblock %}
 
 {% block templates %}
 
-<!-- Underscore templates -->
-<script type="text/template" id="menu-config-template">
-  <div class="page">
-    <div class="menu-config">
-      <h4> Configure Navigation Menu </h4>
+  <!-- Underscore templates -->
+  <script type="text/template" id="menu-config-template">
+    <div class="page ">
+      <div class="menu-config">
+        <h4> Configure Navigation Menu </h4>
+      <button type="button" id="closeNav" class="btn btn-default pull-right"
+        aria-label="Close" data-toggle="tooltip" data-placement="bottom"
+        title="" data-original-title="Close "><span
+          aria-hidden="true">×</span></button>
 
       <div class="row">
         <div class="form-group col-lg-6">
@@ -113,11 +120,20 @@
   </div>
 </script>
 
-<script type="text/template" id="header-config-template">
-  <div class="page">
-    <div><h4> Write HTML for your header here </h4></div>
-    <div id="header-input" class="ace-mouchak">
-      <%= M.escapeHtml(header) %>
+  <script type="text/template" id="header-config-template">
+    <div class="page">
+      <div><h4> Write HTML for your header here </h4></div>
+      <button type="button" id="closeHeader" class="btn btn-default pull-right"
+        aria-label="Close" data-toggle="tooltip" data-placement="bottom"
+        title="" data-original-title="Close "><span
+          aria-hidden="true">×</span></button>
+      <div id="header-input" class="ace-mouchak">
+        <%= M.escapeHtml(header) %>
+      </div>
+      <div class="row">
+        <button id="updateHeader" class="btn btn-primary pull-right update-btn"> Update </button>
+      </div>
+      <div class="clearfix"></div>
     </div>
     <div class="row">
       <button id="updateHeader" class="btn btn-primary pull-right update-btn"> Update </button>
@@ -126,11 +142,20 @@
   </div>
 </script>
 
-<script type="text/template" id="footer-config-template">
-  <div class="page">
-    <div><h4> Write HTML for your footer here </h4></div>
-    <div id="footer-input" class="ace-mouchak">
-      <%= M.escapeHtml(footer) %>
+  <script type="text/template" id="footer-config-template">
+    <div class="page">
+      <div><h4> Write HTML for your footer here </h4></div>
+      <button type="button" id="closeFooter" class="btn btn-default pull-right"
+        aria-label="Close" data-toggle="tooltip" data-placement="bottom"
+        title="" data-original-title="Close "><span
+          aria-hidden="true">×</span></button>
+      <div id="footer-input" class="ace-mouchak">
+        <%= M.escapeHtml(footer) %>
+      </div>
+      <div class="row">
+        <button id="updateFooter" class="btn btn-primary pull-right update-btn"> Update </button>
+      </div>
+      <div class="clearfix"></div>
     </div>
     <div class="row">
       <button id="updateFooter" class="btn btn-primary pull-right update-btn"> Update </button>
@@ -143,22 +168,36 @@
   <div id="pagelistview">
     <table class="table table-condensed" >
       <tbody>
-        <tr><td> <span class="glyphicon glyphicon-plus"></span></td>
-          <td><span class="label label-primary" id="addPage">
+        <tr>
+          <td> <span class="glyphicon glyphicon-plus"></span></td>
+          <td> <span class="label label-primary" id="header-config"
+              data-toggle="tooltip" data-placement="bottom" title="click to add
+              Header"> Header
+            </span>
+          </td>
+          <td> <span class="label label-primary"
+              id="menu-config"data-toggle="tooltip" data-placement="bottom"
+              title="click to add Navigation component" > Navigation Menu
+            </span>
+          </td>
+          <td> <span class="label label-primary"
+              id="footer-config" data-toggle="tooltip" data-placement="bottom"
+              title="click to add Footer" > Footer
+            </span>
+          </td>
+          <td><span class="label label-primary" id="addPage"
+              data-toggle="tooltip" data-placement="bottom" title="click to add
+              Page ">
               Page</span></td>
-          <td> <span class="label label-primary" id="header-config"> Header
-            </span>
-          </td>
-          <td> <span class="label label-primary" id="footer-config"> Footer 
-            </span>
-          </td>
-          <td> <span class="label label-primary" id="menu-config"> Navigation Menu 
-            </span>
-          </td> 
-          <td> <span class="label label-primary" id="uploads">
-                Uploads </span> </td> 
+
+          <td> <span class="label label-primary" id="uploads"
+              data-toggle="tooltip" data-placement="bottom" title="click to
+              upload media ">
+                Uploads </span> </td>
             <td><a href="{{ url_for('index') }}" target="_blank"> <span
-                  class="label label-primary pull-right" id="logoutbtn">Go to site
+                  class="label label-primary pull-right" id="logoutbtn"
+                  data-toggle="tooltip" data-placement="bottom" title="click to
+                  see site preview">Go to site
             </span></a></td>
            </tr>
          </tbody>
@@ -166,11 +205,13 @@
       <table id="pageTable" class="table table-bordered table-condensed table-hover">
         <thead>
           <tr class="active">
-            <th><h4> Page Title </h4></th>
-            <th><h4> Slug </h4> </th>
-            <th> <h4> Published </h4> </th>
+            <th><h4> Slug </h4></th>
+            <th><h4> Page Title </h4> </th>
+            <th> <h4> Author </h4> </th>
             <th> <h4> Categories </h4> </th>
             <th> <h4> Tags </h4> </th>
+            <th> <h4> Published </h4> </th>
+            <th> <h4> Date </h4> </th>
             <th> <h4> Delete </h4> </th>
           </tr>
         </thead>
@@ -183,34 +224,40 @@
 
   <script type="text/template" id="page-list-item-template">
     <tr class="pagename">
-      <td><a class="disp" id="<%= id %>" href="javascript:void(0);"><%= title 
+      <td><a class="disp" id="<%= id %>" href="javascript:void(0);"><%=name
           %></a></td>
-      <td><%= name %></td> 
-      <td><%= published %> </td>
+      <td><%= title %></td>
+      <td><%= author %> </td>
       <td><%= categories %> </td>
       <td><%= tags %> </td>
-      <td><span class="pull-right">
+      <td><%= published %>  </td>
+      <td><%= date %>  </td>
+      <td>
         <a href="javascript:void(0);" class="remove" for="<%= id %>">
           <span class="glyphicon glyphicon-trash"></span>
         </a>
-    </span></td>
+    </td>
       <span class="clearfix"></span>
     </tr>
   </script>
 
   <script type="text/template" id="page-template">
     <div class="page">
-        <div id="closePage" class="pull-right">
-          <span class="glyphicon glyphicon-remove"></span>
-        </div>
       <div class="row">
-        <h4> <strong><%= title %></strong> : Page Details </h4>
-        <% if (published) { %>
-        <input id="publish-status" type="checkbox" class="pull-left" name="" checked='' />Publish
-        <% } else { %>
-        <input id="publish-status" type="checkbox" class="pull-left" name=""/>Publish
-        <% } %>
-      </div>
+        <div class="col-md-6 col-lg-6 pull-right" id="pageActionBar">
+          <button id="copyPage" type="submit" class="btn btn-default" data-toggle="tooltip"
+            data-placement="bottom" title="Make a copy of this page to use it as template for another page">
+            <span class="glyphicon glyphicon-share"></span>Copy
+          </button>
+          <button id="updatePage" type="submit" class="btn btn-default " data-toggle="tooltip"
+            data-placement="bottom" title="Save Page">  <span class="glyphicon
+              glyphicon-save"></span>Save </button>
+          <button type="button" id="closePage" class="btn btn-default
+            pull-right" aria-label="Close" data-toggle="tooltip"
+            data-placement="bottom" title="Close page"><span
+              aria-hidden="true">&times;</span></button>
+        </div>
+          <h4>Page Details: <strong><%= title %></strong> </h4>
       <hr/>
       <form class="form-horizontal">
         <div class="form-group">
@@ -250,26 +297,73 @@
         </span>
         <div class="input-group">
           <span class="input-group-addon"> <strong>SEO Text</strong> </span>
-          <input class="form-control"  id="seotext" type="text" placeholder="Add
-          SEO text for the page"
+          <input class="form-control"  id="seotext" type="text"
+          placeholder="SEO text for the page"
                  value="<%= seotext %>">
         </div>
         <span class="help-block">
-          <small>Add SEO text</small>
+          <small>Add SEO text for page snippets</small>
         </span>
         <div class="input-group">
           <span class="input-group-addon"> <strong>SEO Image URL</strong> </span>
-          <input class="form-control"  id="seoimageurl" type="text" placeholder="Enter
-          Image URL"
-                 value="<%= seoimagesrc %>">
+          <input class="form-control"  id="seoimageurl" type="text"
+          placeholder="SEO Image URL for the page"
+          value="<%= seoimagesrc %>">
         </div>
         <span class="help-block">
-          <small>Add a Image URL within Mouchak</small>
+          <small>Add a Image URL for snippets</small>
         </span>
+        <div class="col-md-6 col-lg-6">
+          <div class="form-group" id="leftGrid">
+            <div class="input-group">
+              <span class="input-group-addon"> <strong>Author</strong> </span>
+              <input class="form-control"  id="author" type="text"
+              placeholder="Author" value="<%=author%>">
+            </div>
+            <span class="help-block">
+              <small>Author of the page</small>
+            </span>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <% if (published) { %>
+                  <input id="publish-status" type="checkbox" class="pull-left" name="" checked='' />
+                  <% } else { %>
+                  <input id="publish-status" type="checkbox" class="pull-left" name=""/>
+                  <% } %>
+              </span>
+              <input class="form-control" type="text" value="Publish" disabled>
+            </div>
+            <span class="help-block">
+              <small>Publish this page? </small>
+            </span>
+          </div>
+        </div>
+      <div class="col-md-6 col-lg-6">
+        <div class="form-group" id="navChoice">
+          <div class="input-group">
+            <span class="input-group-addon"> <strong>Posted on</strong> </span>
+            <input class="form-control"  id="publishDate" type="date"
+            placeholder="Date of Publish" format="dd/mm/yyyy"
+            value="<%= date %>">
+          </div>
+          <span class="help-block">
+            <small>Date of publishing</small>
+          </span>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <input id="showNav" type="checkbox" <%= checked %> >
+            </span>
+            <input class="form-control" type="text" value="Navigation menu" disabled>
+          </div>
+          <span class="help-block">
+            <small>Show navigation menu in this page? </small>
+          </span>
+        </div>
+      </div>
 
 
         <div class="form-group">
-          <strong> Content </strong>
+          <span id="contentBox"><strong> Content </strong></span>
           <div id="content" class="content well">
             <%= content %>
             <p></p>
@@ -291,22 +385,7 @@
           <span class="help-block">
             <small> leave this blank for now</small>
           </span>
-</div-->
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-addon">
-            <input id="showNav" type="checkbox" <%= checked %> >
-          </span>
-          <input class="form-control" type="text" value="Show Navigation" disabled>
-        </div>
-        <span class="help-block">
-          <small>Show navigation menu in this page? </small>
-        </span>
-        <button id="updatePage" type="submit" class="btn btn-primary pull-right"> Update </button>
-        <button id="copyPage" type="submit" class="btn btn-default" data-toggle="tooltip"
-          data-placement="bottom" title="Make a copy of this page to use it as template for another page">
-            <span class="glyphicon glyphicon-share"></span> Copy page
-        </button>
+        </div-->
         <div class="clearfix"></div>
       </form>
     </div>
@@ -531,6 +610,10 @@
   <script type="text/template" id="uploads-template">
     <div class="page">
       <div><h4> All your uploads </h4></div>
+          <button type="button" id="closeUploads" class="btn btn-default
+            pull-right" aria-label="Close" data-toggle="tooltip"
+            data-placement="bottom" title="Close page"><span
+              aria-hidden="true">&times;</span></button>
       <div  class="table-responsive">
         <table id="uploads-list" class="table table-bordered table-condensed table-hover ">
           <thead>

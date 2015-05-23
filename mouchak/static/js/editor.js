@@ -20,7 +20,7 @@
       this.template = _.template($('#page-list-template').html());
       this.listTemplate = _.template($('#page-list-item-template').html());
       // append this.el to container #pages
-      this.$el.addClass('container');
+      this.$el.addClass('container animated fadeInRight');
       $('#content-container').append(this.$el);
       this.$el.append(this.template());
       this.$pagelist = $('#pagelist');
@@ -40,15 +40,17 @@
       _.each(M.pages.models, function(page) {
         this.$pagelist.append(this.listTemplate({
           title: page.get('title'),
-          published: page.get('published'), 
+          published: page.get('published'),
           categories: page.get('categories'),
           tags: page.get('tags'),
           name: page.get('name'),
+          author: page.get('author'),
+          date: page.get('date'),
           id: page.id
         }));
       }, this);
-      $('#pageTable').dataTable(); //http://www.datatables.net/ 
-      //The DataTable is open source jQuery plugin automatically provides column sorting, searching and
+       $('#pageTable').dataTable(); //http://www.datatables.net/
+      //The DataTable is open source jQuery plugin,  provides column sorting, searching and
       //paging.
 
     },
@@ -57,8 +59,11 @@
       pageview = new PageView({model: M.pages.get(id)});
       pageview.render();
       M.editor.pageview = pageview;
+      M.pagelistview.toggle();
+
     },
     addPage: function() {
+      M.pagelistview.toggle();
       var newpage = new M.types.model.Page({name: 'newpage'});
       M.pages.add(newpage);
       var self = this;
@@ -100,28 +105,41 @@
     },
     showMenu: function(event) {
       event.preventDefault();
+      M.pagelistview.toggle();
       this.menuconfigview.render();
       return false;
     },
     showFooterConfig: function(event) {
       event.preventDefault();
+      M.pagelistview.toggle();
       this.footerconfigview.render();
       return false;
     },
     showHeaderConfig: function(event) {
       event.preventDefault();
+      M.pagelistview.toggle();
       this.headerconfigview.render();
       return false;
     },
     uploads: function(event) {
       event.preventDefault();
+      M.pagelistview.toggle();
       this.uploadview.render();
+      //M.pagelistview.toggle();
       return false;
     },
     // validate the page list with menu order list
     validate: function()  {
       //TODO: validate if the menu order list matches with the list of pages
       //and provide relevant notifications
+    },
+    toggle: function() {
+      if(this.$el.is(':visible')) {
+        this.$el.hide();
+      }
+      else {
+        this.$el.show();
+      }
     }
   });
 
@@ -129,6 +147,7 @@
     model: M.types.model.Page,
     url: M.PageURL()
   });
+  Window.pages = M.PageListView;
 
   /* view to manage each page and their properties - change page properties,
    * add content, remove and show content, and update the page */
@@ -150,7 +169,7 @@
       this.editing = false;
       this.edit_idx = -1;
       $('#page').remove();
-      this.$el.addClass("container");
+      this.$el.addClass("container animated fadeInLeft");
       $('#content-container').append(this.$el);
       this.template = _.template($('#page-template').html());
       this.contentListTemplate =
@@ -174,6 +193,10 @@
     render: function() {
       $('#page').html('');
       //console.log('content: ', this.model.get('content'));
+      // set title, if empty, of the page from slug
+      if(!(this.model.get('title'))) {
+        this.model.set({'title': this.model.get('name').replace(/-/g, ' ')});
+      }
 
       this.$el.html(this.template({
         name: this.model.get('name'),
@@ -183,8 +206,10 @@
         categories: this.model.get('categories'),
         tags: this.model.get('tags'),
         published: this.model.get('published'),
+        date: this.model.get('date'),
         seoimagesrc: this.model.get('seoimagesrc'),
         seotext: this.model.get('seotext'),
+        author: this.model.get('author'),
         checked: this.model.get('showNav') ? 'checked="checked"' : ''
       }));
 
@@ -194,8 +219,8 @@
       }, function(event) {
         $(event.currentTarget).removeClass('alert-info');
       });
-      // init tooltip on this page view..
-      $('#page').tooltip();
+      // init bootstrap js tooltip component  on this page view..
+      $("[data-toggle='tooltip']").tooltip();
     },
     listContent: function() {
       var content = '';
@@ -277,19 +302,22 @@
     },
     updatePage: function(event) {
       event.preventDefault();
-      var name = $('#title').val().replace(/\s+/g, '-').toLowerCase();
+      var name = $('#title').val().replace(/[^A-Za-z0-9]/g, ' ').replace(/\s+/g, '-').toLowerCase();
       var title = $('#title').val();
       var categories = $("#categories").val().split(',');
       var tags = $("#tags").val().split(',');
+      var author = $("#author").val();
       var seoimagesrc = $("#seoimageurl").val();
       var seotext = $("#seotext").val();
       var published = $("#publish-status").is(':checked');
+      var date = $("#publishDate").val();
       var children = [];
       //var children = $('#children').val();
       //children = (children === '') ? [] : children.split(',');
       this.model.set({'name': name, 'title': title,
                       'children': children, 'categories':categories,
-                      'tags': tags, 'seoimagesrc': seoimagesrc, 'seotext': seotext, 'published': published});
+                      'tags': tags, 'author': author, 'seoimagesrc': seoimagesrc,
+                      'seotext': seotext, 'published': published, 'date': date});
 
       if($('#showNav').is(':checked')) {
         this.model.set({'showNav': true});
@@ -352,9 +380,16 @@
     closePage: function(event) {
       event.preventDefault();
       M.editor.pageview.remove();
+      M.pagelistview.toggle();
+    },
+    toggle: function() {
+      if(this.$el.is(':visible')) {
+        this.$el.hide();
+      }
+      else {
+        this.$el.show();
+      }
     }
-
-
   });
 
   /* view to manage, render and update each content */
@@ -515,8 +550,9 @@
     cleanUp: function() {
       //this.$el.remove();
       this.remove();
-      $('#pages').show();
-      $('#page').show();
+      // $('#pages').show();
+      // $('#page').show();
+      M.editor.pageview.toggle();
     },
     done: function() {
       this.update();
@@ -556,6 +592,7 @@
     id: 'page',
     events: {
       'change #custom-menu': 'customMenuChange',
+      'click #closeNav': 'closeMenu',
       'click #updateMenu': 'saveMenu'
     },
     initialize: function() {
@@ -563,8 +600,10 @@
       this.template = _.template($('#menu-config-template').html());
     },
     render: function() {
+      this.toggle();
       $('#page').remove();
       this.delegateEvents();
+      this.$el.addClass("container animated fadeInLeft");
       $('#content-container').append(this.$el);
       //console.log('rendering..', this.$el);
       this.$el.html(this.template({
@@ -582,6 +621,7 @@
           M.editor.code.init('menu', 'html');
         }});
       }
+      $('[data-toggle="tooltip"]').tooltip();
     },
     showMenuOptions: function(bool) {
     if(bool === true) {
@@ -632,6 +672,19 @@
       });
       //alert('end of save menu');
       M.editor.showOverlay();
+    },
+    toggle: function() {
+      if(this.$el.is(':visible')) {
+        this.$el.hide();
+      }
+      else {
+        this.$el.show();
+      }
+    },
+    closeMenu: function(e) {
+      e.preventDefault();
+      M.pagelistview.toggle();
+      this.toggle();
     }
   });
 
@@ -641,21 +694,25 @@
     className: 'prettybox-lg',
     id: 'page',
     events: {
-      'click #updateFooter': 'saveFooter'
+      'click #updateFooter': 'saveFooter',
+      'click #closeFooter' : 'closeFooter'
     },
     initialize: function() {
       _.bindAll.apply(_, [this].concat(_.functions(this)));
       this.template = _.template($('#footer-config-template').html());
     },
     render: function() {
+      this.toggle();
       $('#page').remove();
       this.delegateEvents();
+      this.$el.addClass("container animated fadeInLeft");
       $('#content-container').append(this.$el);
       //console.log('rendering..', this.$el);
       this.$el.html(this.template({
         footer: this.model.get('html')
       }));
       M.editor.code.init('footer-input', 'html');
+      $('[data-toggle="tooltip"]').tooltip();
     },
     saveFooter: function() {
       var html = M.editor.code.save('footer-input');
@@ -674,6 +731,19 @@
         }
       });
       M.editor.showOverlay();
+    },
+    toggle: function() {
+      if(this.$el.is(':visible')) {
+        this.$el.hide();
+      }
+      else {
+        this.$el.show();
+      }
+    },
+    closeFooter: function(e) {
+      e.preventDefault();
+      M.pagelistview.toggle();
+      this.toggle();
     }
   });
 
@@ -683,21 +753,25 @@
     className: 'prettybox-lg',
     id: 'page',
     events: {
-      'click #updateHeader': 'saveHeader'
+      'click #updateHeader': 'saveHeader',
+      'click #closeHeader' : 'closeHeader'
     },
     initialize: function() {
       _.bindAll.apply(_, [this].concat(_.functions(this)));
       this.template = _.template($('#header-config-template').html());
     },
     render: function() {
+      this.toggle();
       $('#page').remove();
       this.delegateEvents();
+      this.$el.addClass("container animated fadeInLeft");
       $('#content-container').append(this.$el);
       //console.log('rendering..', this.$el);
       this.$el.html(this.template({
         header: this.model.get('html')
       }));
       M.editor.code.init('header-input', 'html');
+      $('[data-toggle="tooltip"]').tooltip();
     },
     saveHeader: function() {
       var html = M.editor.code.save('header-input');
@@ -716,6 +790,19 @@
         }
       });
       M.editor.showOverlay();
+    },
+    toggle: function() {
+      if(this.$el.is(':visible')) {
+        this.$el.hide();
+      }
+      else {
+        this.$el.show();
+      }
+    },
+    closeHeader: function(e) {
+      e.preventDefault();
+      M.pagelistview.toggle();
+      this.toggle();
     }
   });
 
@@ -757,14 +844,17 @@
     id: 'page',
     events: {
       'click #upload-new-file': 'uploadFile',
-      'click .uploaded-item .remove': 'removeFile'
+      'click .uploaded-item .remove': 'removeFile',
+      'click #closeUploads' : 'closeUploads'
     },
     initialize: function() {
       _.bindAll.apply(_, [this].concat(_.functions(this)));
       this.template = _.template($('#uploads-template').html());
     },
     render: function() {
+      this.toggle();
       $('#page').remove();
+      this.$el.addClass("container animated fadeInLeft");
       $('#content-container').append(this.$el);
       //console.log('rendering..', this.$el);
       var uploaded_files, self = this;
@@ -821,7 +911,7 @@
             var msg = 'Something went wrong. Please try again!';
           }
           M.editor.notifs.show('fail', 'Error!', msg);
-        }
+        },
       });
     },
     removeFile: function(event) {
@@ -840,6 +930,20 @@
           console.log(arguments);
         }
       });
+    },
+    toggle: function() {
+      if(this.$el.is(':visible')) {
+        this.$el.hide();
+      }
+      else {
+        this.$el.show();
+      }
+    },
+    closeUploads: function(e) {
+      e.preventDefault();
+      console.log("yayy");
+      M.pagelistview.toggle();
+      this.toggle();
     }
   });
 

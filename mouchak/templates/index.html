@@ -25,7 +25,6 @@
     window.M = window.M || {};
     M.MenuURL = function() { return "{{ url_for('insertMenu') }}"};
     M.PageURL = function() { return "{{ url_for('insertPage') }}"; };
-    M.AnalyticsURL = function() { return "{{ url_for('analytics') }}"; };
     M.site_content = {{ content|tojson|safe }};
     window.onload = function() {
       M.init();
@@ -75,7 +74,7 @@
   </script>
   <script type="text/template" id="text-template">
     <div class="text-content">
-      <h4> <%= title %> </h4>
+      <!-- <h4> <%= title %> </h4>-->
       <p> <%= data %> </p>
       <% if (tags.length) { %>
       <span class="post-tag-foot col-md-offset-3 col-lg-offset-3"

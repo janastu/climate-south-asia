@@ -174,6 +174,8 @@
       categories: [],
       tags: [],
       published: false,
+      date:"",
+      author:"",
       seoimagesrc:"",
       seotext:"",
       showNav: true
