@@ -356,28 +356,6 @@ def removeFile(filename):
         return resp
 
 
-"""#CSA needs analytics
-@app.route('/analytics', methods=['GET', 'POST'])
-def analytics():
-  response = make_response()
-  if request.method == 'GET':
-    #TODO: gather analytics data from db and send back a HTML rendering it
-    pass
-  elif request.method == 'POST':
-    if 'type' not in flask.request.form:
-      abort(400)
-      
-    data = {}
-    data['type'] = request.form['type']
-    if data['type'] == 'pageview':
-      data['page'] = request.form['page']
-      
-    print data
-    analytics_coll.insert(data)
-    total_hits = analytics_coll.find({'type': 'pageview'}).count()
-    return flask.jsonify(total_hits=total_hits)"""
-
-
 @app.route('/robots.txt')
 @app.route('/crossdomain.xml')
 def static_from_root():
