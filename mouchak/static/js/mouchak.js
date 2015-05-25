@@ -13,7 +13,6 @@
     initialize: function() {
       _.bindAll.apply(_, [this].concat(_.functions(this)));
       this.$pageview_counter = $('#pageview-counter');
-
     },
     render: function() {
       var menu = new M.types.model.menu(M.site_content.menu);
@@ -25,25 +24,25 @@
       //TODO: write code to use bootstrap's breadcrumbs to render a
       // navigational breadcrumb
     },
-       recordPageView: function(page) {
-         var self = this;
-         $.ajax({
-           url: M.AnalyticsURL(),
-                  type: 'POST',
-                  data: {'type': 'pageview', 'page': page},
-                  success: function(data) {
-                      //console.log('recorded by server');
-                         self.updatePageViewCounter(data);
-                    },
-            error: function(jqxhr, error, status_text) {
-                        console.log('Unable to post page view analytics');
-                        console.log(error, status_text);
-                      }
-              });
-            },
-        updatePageViewCounter: function(data) {
-                this.$pageview_counter.html(data.total_hits);
-                }
+    recordPageView: function(page) {
+      var self = this;
+      $.ajax({
+        url: M.AnalyticsURL(),
+        type: 'POST',
+        data: {'type': 'pageview', 'page': page},
+        success: function(data) {
+          //console.log('recorded by server');
+          self.updatePageViewCounter(data);
+        },
+        error: function(jqxhr, error, status_text) {
+          console.log('Unable to post page view analytics');
+          console.log(error, status_text);
+        }
+      });
+    },
+    updatePageViewCounter: function(data) {
+      this.$pageview_counter.html(data.total_hits);
+    }
   });
 
   var NavigationView = Backbone.View.extend({
@@ -135,8 +134,8 @@
 
   var AppRouter = Backbone.Router.extend({
     routes : {
-        ':page' : 'showPage'
-        },
+      ':page' : 'showPage'
+    },
     showPage: function(page, params) {
       $('.pageview').hide();
       //news pages are rendered on the fly,
