@@ -50,7 +50,7 @@
     el: '#navigation',
     events: {
       'click .nav li a' : 'navClicked',
-      'navclicked': 'navClicked'
+      'click #navigation a': 'navClicked'
     },
     initialize: function() {
       _.bindAll.apply(_, [this].concat(_.functions(this)));
@@ -126,9 +126,16 @@
         // get the URL fragment
         var fragment = location.hash.split('/')[1];
         // find out where it is in the nav menu
-        var link = $('.nav').find('a[href="#/'+ fragment +'"]')[0];
+        var link = $('#navigation').find('a[href="#/'+ fragment +'"]')[0];
         // find its <li> parent all the way up in the main ul.nav
         $(link).closest('ul.nav > li').addClass('active');
+        var headerText = M.humanReadable(fragment);
+        if(headerText.length < 13) {
+          $("#header #change-text").text(headerText);
+        }
+        else {
+          $("#header #change-text").text("");
+        }
       }
     }
   });
