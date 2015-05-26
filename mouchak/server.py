@@ -32,7 +32,7 @@ import logging
 import cache
 from flask import (Flask, make_response, request, jsonify, session,
                    render_template, redirect, url_for, send_from_directory,
-                   flash)
+                   flash, abort)
 from flask.ext.pymongo import PyMongo
 from flaskext.uploads import (UploadSet, configure_uploads, IMAGES,
                               DATA, DOCUMENTS, UploadConfiguration)
@@ -86,6 +86,11 @@ def getContent(key=None, drafts=False):
     else:
         return {'content': content, 'menu': menu, 'footer': footer, 'header':
                 header}
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit(
+        '.', 1)[1] in app.config.get('ALLOWED_EXTENSIONS')
 
 
 @app.before_first_request
@@ -283,10 +288,13 @@ def logout():
 @app.route('/static/user_plugins/<filename>', methods=['POST'])
 def savePlugin(filename):
     try:
-        plugin_upload.save(request.form.get('code'),
-                           name=secure_filename(filename))
-        return jsonify(saved=True)
-
+        if filename and allowed_file(filename):
+            data = request.form['code']
+            filename = secure_filename(filename)
+            with open(os.path.join(app.config.get('PLUGIN_UPLOAD_FOLDER'),
+                                   filename), 'w') as fh:
+                fh.write(data)
+            return jsonify(saved=True)
     except:
         resp = make_response()
         resp.status_code = 400
@@ -348,26 +356,23 @@ def removeFile(filename):
         return resp
 
 
-"""#CSA needs analytics
 @app.route('/analytics', methods=['GET', 'POST'])
 def analytics():
-  response = make_response()
-  if request.method == 'GET':
-    #TODO: gather analytics data from db and send back a HTML rendering it
-    pass
-  elif request.method == 'POST':
-    if 'type' not in flask.request.form:
-      abort(400)
-      
-    data = {}
-    data['type'] = request.form['type']
-    if data['type'] == 'pageview':
-      data['page'] = request.form['page']
-      
-    print data
-    analytics_coll.insert(data)
-    total_hits = analytics_coll.find({'type': 'pageview'}).count()
-    return flask.jsonify(total_hits=total_hits)"""
+    if request.method == 'GET':
+        # TODO: gather analytics data from db and send back a HTML rendering it
+        pass
+    elif request.method == 'POST':
+        if 'type' not in request.form:
+            abort(400)
+
+        data = {}
+        data['type'] = request.form['type']
+        if data['type'] == 'pageview':
+            data['page'] = request.form['page']
+
+        mongo.db.analytics.save(data)
+        total_hits = mongo.db.analytics.find({'type': 'pageview'}).count()
+        return jsonify(total_hits=total_hits)
 
 
 @app.route('/robots.txt')

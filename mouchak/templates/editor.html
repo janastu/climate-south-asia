@@ -19,23 +19,24 @@
   </div>
   <div id="content-container"></div>
   <div id="footer"></div>
-</div>
-<div id="editor-overlay"></div>
+  </div>
+  <div id="editor-overlay"></div>
 
-<script>
-  // initialize editor
-  window.M = window.M || {};
-  M.MenuURL = function() { return "{{ url_for('insertMenu') }}"; };
-  M.FooterURL = function() { return "{{ url_for('insertFooter') }}"; };
-  M.HeaderURL = function() { return "{{ url_for('insertHeader') }}"; };
-  M.PageURL = function() { return "{{ url_for('insertPage') }}"; };
-  M.PluginUploadURL = function() { return "{{ url_for('uploadPlugin') }}"; };
-  M.UploadsURL = function() { return "{{ url_for('static', filename='uploads/') }}"; };
-  M.site_content = {{ content|tojson|safe }};
-  window.onload = function() {
-  M.editor.init();
-  };
-</script>
+  <script>
+    // initialize editor
+    window.M = window.M || {};
+    M.MenuURL = function() { return "{{ url_for('insertMenu') }}"; };
+    M.FooterURL = function() { return "{{ url_for('insertFooter') }}"; };
+    M.HeaderURL = function() { return "{{ url_for('insertHeader') }}"; };
+    M.PageURL = function() { return "{{ url_for('insertPage') }}"; };
+    M.PluginUploadURL = function() { return "{{ url_for('uploadPlugin') }}"; };
+    M.UploadsURL = function() { return "{{ url_for('static', filename='uploads/') }}"; };
+    M.site_content = {{ content|tojson|safe }};
+    M.AnalyticsURL = function() { return "{{ url_for('analytics') }}"; };
+    window.onload = function() {
+      M.editor.init();
+    };
+  </script>
 {% endblock %}
 
 {% block scripts %}
