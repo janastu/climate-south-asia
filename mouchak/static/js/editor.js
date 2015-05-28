@@ -37,6 +37,7 @@
     render: function() {
       // append the page list
       this.$pagelist.html('');
+      
       _.each(M.pages.models, function(page) {
         this.$pagelist.append(this.listTemplate({
           title: page.get('title'),
