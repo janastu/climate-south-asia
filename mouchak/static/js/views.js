@@ -198,6 +198,10 @@
           item_view.render(self.el);
         }
       });
+
+      var tagTemplate = _.template($("#page-foot-tags").html());
+        $(this.el).append(tagTemplate(this.model.toJSON()));  
+
     },
     appendNavTemplate: function() {
       var li;
