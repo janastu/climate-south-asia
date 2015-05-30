@@ -64,10 +64,13 @@
       <p> <%= data %> </p>
       <% if (tags.length) { %>
       <span class="post-tag-foot col-md-offset-3 col-lg-offset-3"
-        style="Display:block;"> This Article
-        is tagged  <% _.each(tags, function(tag){ %>
+        style="Display:block;"> This Article is tagged
+        <% for(var tag in tags) { %>
+           <span class="tag-item"><%= tags[tag] %></span>
+          <% } %>
+        <!--is tagged  <% _.each(tags, function(tag){ %>
           <span class="tag-item"> <%= tag %></span>,
-          <% }); %>
+          <% }); %>-->
         <% } %>
 
        </span>
@@ -146,7 +149,7 @@
       In Categories 
       
         <% for(var tag in tags) { %>
-           <span class="tag-item"><%= tags[tag] %><span>
+           <span class="tag-item"><%= tags[tag] %></span>
           <% } %>
       
     </span>
