@@ -199,8 +199,10 @@
         }
       });
 
+      if(this.model.get('categories') == "Articles" || this.model.get('categories') == "News") {
       var tagTemplate = _.template($("#page-foot-tags").html());
         $(this.el).append(tagTemplate(this.model.toJSON()));  
+      }
 
     },
     appendNavTemplate: function() {
