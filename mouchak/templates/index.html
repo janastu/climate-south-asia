@@ -62,8 +62,7 @@
       <!-- <h4> <%= title %> </h4>-->
        <%= data %> 
       <% if (tags.length) { %>
-      <span class="post-tag-foot col-md-offset-3 col-lg-offset-3"
-        style="Display:block;"> This Article is tagged
+      <span class="post-tag-foot"> This Article is tagged
         <% for(var tag in tags) { %>
            <span class="tag-item"><%= tags[tag] %></span>
           <% } %>
@@ -143,7 +142,7 @@
 
   <!-- Template for page/ content footer to display category and tags -->
   <script type="text/template" id="page-foot-tags">
-    <span class="page-foot-category" style="display: block;" > 
+    <span class="page-foot-category"> 
       In Categories 
       
         <% for(var tag in tags) { %>
