@@ -12,7 +12,6 @@
     render: function(el) {
       var template =  _.template($("#text-template").html());
       $(el).append(this.el);
-      var tags = this.model.toJSON().tags; 
       $(this.el).append(template(this.model.toJSON()));
       M.appendAttrs(this.model, this.el);
     }
@@ -198,10 +197,9 @@
           item_view.render(self.el);
         }
       });
-
-      if(this.model.get('categories') == "Articles" || this.model.get('categories') == "News") {
       var tagTemplate = _.template($("#page-foot-tags").html());
-        $(this.el).append(tagTemplate(this.model.toJSON()));  
+      if(this.model.get('categories') != "theme") {
+        $(this.el).append(tagTemplate(this.model.toJSON())); 
       }
 
     },
